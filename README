@@ -1,0 +1,13 @@
+XMCDA
+-----
+
+The XMCDA repository contains files related to the XMCDA data standard:
+
+ - XMLSchema contains the XML Schema of XMCDA
+ - stylesheets contains css and xsl stylesheets to show XMCDA files in a web browser
+ - quickDive contains a description on the use of XMCDA for beginners
+ - logo contains the logo of XMCDA
+
+XMCDA is copyrighted by the Decision Deck Consortium, released
+under the CeCILL license (v2) and maintained by Patrick Meyer
+(patrick.meyer@telecom-bretagne.eu). 
