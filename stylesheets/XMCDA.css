@@ -1,0 +1,173 @@
+
+table
+{
+	border: 1pt solid;
+	border-collapse: collapse;
+	margin-bottom: 10pt;
+	padding: 0pt;
+}
+
+table.tableList
+{
+	border: 0pt;
+	padding: 0pt;
+}
+
+td
+{
+	border: 1pt solid;
+	padding: 3pt 5pt 3pt 5pt;
+}
+
+td.header
+{
+	text-align: center;
+	background-color: #CCC;
+}
+
+li
+{
+	margin-bottom: 10pt;
+}
+
+.XMCDA
+{
+	
+	width: 95% ;
+	margin: 5pt auto ;
+	text-align: left ;
+	/*border-left : 1pt solid black;
+	border-right: 3pt solid black;
+	border-top : 1pt solid black;
+	border-bottom: 3pt solid black;*/
+	padding-bottom: 10pt;
+	font-size: 12pt;
+}
+
+.bloc
+{
+	border: solid 1pt #9999cc;
+	margin-left: 15pt;
+	margin-top: 10pt;
+	margin-bottom: 15pt;
+	padding: 10pt;
+	margin-right: 15pt;
+}
+
+.sousbloc
+{
+	margin-bottom: 10pt;
+	margin-left: 15pt;
+}
+
+.title
+{
+	width: 100%;
+	color:blue;
+	text-align: center;
+	font-size: 15pt;
+}
+
+.subTitle
+{
+	width: 100%;
+	text-align: center;
+	font-size: 11pt;
+}
+
+.subSubTitle
+{
+	width: 100%;
+	text-align: center;
+	font-size: 11pt;
+}
+
+.classTitle
+{
+	font-weight: bold;
+	font-size: 14pt;
+	margin-bottom: 10pt;
+}
+
+.classSubTitle
+{
+	font-weight: bold;
+	margin-bottom: 5pt;
+}
+
+/*.classSubTitle:before
+{
+	content: " - ";
+}*/
+
+.classSubSubTitle
+{
+	margin-bottom: 5pt;
+	font-style: italic;
+}
+
+.name
+{
+	float: left;
+	font-weight: bold;
+	margin-right: 2pt;
+}
+
+.item
+{
+}
+
+/* description */
+.description
+{
+	font-size: 11pt;
+	font-style: italic;
+	padding-left: 0pt;
+}
+
+.itemDescription
+{
+	
+}
+
+
+/* projectReference */
+
+.projectReference
+{
+	width: 85%;
+	text-align: center;
+	border: solid 1pt #9999cc;
+	margin-left: 50pt;
+	margin-top: 10pt;
+	padding: 10pt;
+}
+
+.author
+{
+	width: 100%;
+	text-align: center;
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+
+/* methodParameters */
+
+.methodParameters
+{
+	margin-bottom: 10pt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
