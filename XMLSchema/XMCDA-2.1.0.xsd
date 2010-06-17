@@ -1,0 +1,1888 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.decision-deck.org/2009/XMCDA-2.1.0"
+	xmlns:xmcda="http://www.decision-deck.org/2009/XMCDA-2.1.0">
+
+
+	<xs:annotation>
+		<xs:documentation>
+			XMCDA 2.1.0 Schema 
+			Raymond Bisdorff (University of Luxembourg), Patrick MEYER (Telecom Bretagne), Thomas Veneziano (University of Luxembourg).
+			Copyright (C) June 2010 DECISION DECK Consortium
+		</xs:documentation>
+	</xs:annotation>
+
+
+	<!-- Root element to XMCDA instances -->
+
+
+	<xs:element name="XMCDA">
+
+		<xs:annotation>
+			<xs:documentation>Root of the XMCDA element tree.</xs:documentation>
+		</xs:annotation>
+
+		<xs:complexType>
+
+			<xs:choice minOccurs="1" maxOccurs="unbounded">
+
+				<xs:element name="projectReference" type="xmcda:projectReference" minOccurs="0" maxOccurs="unbounded"/>
+
+				<xs:element name="methodMessages" type="xmcda:methodMessages" minOccurs="0" maxOccurs="unbounded"/>
+
+				<xs:element name="methodParameters" type="xmcda:methodParameters" minOccurs="0" maxOccurs="unbounded"/>
+				
+				<!-- description of the alternatives and the sets of alternatives -->
+				
+				<xs:element name="alternatives" type="xmcda:alternatives" minOccurs="0" maxOccurs="unbounded"/>
+					
+				<xs:element name="alternativesSet" type="xmcda:alternativesSet" minOccurs="0" maxOccurs="unbounded"/>
+				
+				<xs:element name="alternativesSets" type="xmcda:alternativesSets" minOccurs="0" maxOccurs="unbounded"/>
+				
+				<!-- description of the attributes, the criteria, the sets of attributes and the sets of criteria -->
+
+				<xs:element name="attributes" type="xmcda:attributes" minOccurs="0" maxOccurs="unbounded"/>
+				
+				<xs:element name="attributesSet" type="xmcda:attributesSet" minOccurs="0" maxOccurs="unbounded"/>
+
+				<xs:element name="attributesSets" type="xmcda:attributesSets" minOccurs="0" maxOccurs="unbounded"/>
+				
+				<xs:element name="criteria" type="xmcda:criteria" minOccurs="0" maxOccurs="unbounded"/>
+				
+				<xs:element name="criteriaSet" type="xmcda:criteriaSet" minOccurs="0" maxOccurs="unbounded"/>
+				
+				<xs:element name="criteriaSets" type="xmcda:criteriaSets" minOccurs="0" maxOccurs="unbounded"/>
+				
+				<!-- description of the categories and the sets of categories -->
+
+				<xs:element name="categories" type="xmcda:categories" minOccurs="0" maxOccurs="unbounded"/>
+				
+				<xs:element name="categoriesSet" type="xmcda:categoriesSet" minOccurs="0" maxOccurs="unbounded"/>
+				
+				<xs:element name="categoriesSets" type="xmcda:categoriesSets" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- the performance table -->
+
+				<xs:element name="performanceTable" type="xmcda:performanceTable" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- a hierarchy on criteria, alternatives, attributes, categories -->
+				
+				<xs:element name="hierarchy" type="xmcda:hierarchy" minOccurs="0" maxOccurs="unbounded"/>
+
+				<!-- data linked to criteria -->
+
+				<xs:element name="criterionValue" minOccurs="0" maxOccurs="unbounded" type="xmcda:criterionValue"/>
+				<xs:element name="criteriaValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaValues"/>
+				<xs:element name="criteriaComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaComparisons"/>
+				<xs:element name="criteriaLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaLinearConstraints"/>
+				<xs:element name="criteriaMatrix" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaMatrix"/>
+				
+				<!-- data linked to attributes -->
+				
+				<xs:element name="attributeValue" minOccurs="0" maxOccurs="unbounded" type="xmcda:attributeValue"/>
+				<xs:element name="attributesValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:attributesValues"/>
+				<xs:element name="attributesComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:attributesComparisons"/>
+				<xs:element name="attributesLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:attributesLinearConstraints"/>
+				<xs:element name="attributesMatrix" minOccurs="0" maxOccurs="unbounded" type="xmcda:attributesMatrix"/>
+
+				<!-- data linked to alternatives -->
+
+				<xs:element name="alternativeValue" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativeValue"/>
+				<xs:element name="alternativesValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesValues"/>
+				<xs:element name="alternativesComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesComparisons"/>
+				<xs:element name="alternativesLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesLinearConstraints"/>
+				<xs:element name="alternativesMatrix" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesMatrix"/>
+
+				<!-- data linked to allternatives and criteria -->
+				
+				<xs:element name="alternativesCriteriaValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesCriteriaValues"/>
+
+				<!-- data linked to categories -->
+				
+				<xs:element name="categoriesProfiles" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesProfiles" />
+				<xs:element name="categoriesContents" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesContents"/>
+				<xs:element name="alternativesAffectations" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesAffectations"/>
+				<xs:element name="categoryValue" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoryValue"/>
+				<xs:element name="categoriesValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesValues"/>
+				<xs:element name="categoriesComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesComparisons"/>
+				<xs:element name="categoriesLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesLinearConstraints"/>
+				<xs:element name="categoriesMatrix" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaMatrix"/>
+
+			</xs:choice>
+
+			<xs:attributeGroup ref="xmcda:instanceDescription"/>
+
+		</xs:complexType>
+
+
+		<!-- reference integrity constraints -->
+
+		<!-- <xs:key name="categoriesSetKey">
+			<xs:selector xpath=".//categoriesSet"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		
+		<xs:keyref name="categoriesSetRef" refer="xmcda:categoriesSetKey">
+			<xs:selector xpath=".//categoriesSetID"/>
+			<xs:field xpath="."/>
+		</xs:keyref> -->
+
+		<!-- <xs:key name="alternativesSetKey">
+			<xs:selector xpath=".//alternativesSet"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		
+		<xs:keyref name="alternativesSetRef" refer="xmcda:alternativesSetKey">
+			<xs:selector xpath=".//alternativesSetID"/>
+			<xs:field xpath="."/>
+		</xs:keyref> -->
+
+		<!--  <xs:key name="criteriaSetKey">
+			<xs:selector xpath=".//criteriaSet"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		
+		<xs:keyref name="criteriaSetRef" refer="xmcda:criteriaSetKey">
+			<xs:selector xpath=".//criteriaSetID"/>
+			<xs:field xpath="."/>
+		</xs:keyref> -->
+
+		<!-- <xs:key name="alternativeKey">
+			<xs:selector xpath=".//alternative"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+
+		<xs:keyref name="alternativeRef" refer="xmcda:alternativeKey">
+			<xs:selector xpath=".//alternativeID"/>
+			<xs:field xpath="."/>
+		</xs:keyref>
+
+		<xs:key name="attributeKey">
+			<xs:selector xpath=".//attribute"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+		
+		<xs:keyref name="attributeRef" refer="xmcda:attributeKey">
+			<xs:selector xpath=".//attributeID"/>
+			<xs:field xpath="."/>
+		</xs:keyref>
+
+		<xs:key name="criterionKey">
+			<xs:selector xpath=".//criterion"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+
+		<xs:keyref name="criterionRef" refer="xmcda:criterionKey">
+			<xs:selector xpath=".//criterionID"/>
+			<xs:field xpath="."/>
+		</xs:keyref>
+
+		<xs:key name="categoryKey">
+			<xs:selector xpath=".//category"/>
+			<xs:field xpath="@id"/>
+		</xs:key>
+
+		<xs:keyref name="categoryRef" refer="xmcda:categoryKey">
+			<xs:selector xpath=".//categoryID"/>
+			<xs:field xpath="."/>
+		</xs:keyref> -->
+
+	</xs:element>
+
+
+	<!-- XMCDA types declarations -->
+
+
+	<xs:attributeGroup name="instanceDescription">
+		<xs:annotation>
+			<xs:documentation> Group of attributes used to describe the physical characteristics of an XMCDA instance file. The instanceID is required. The optional previousInstanceID is used to link the current instance to the previous version of the same XMCDA document. </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="instanceID" type="xs:string" use="optional"/>
+		<xs:attribute name="previousInstanceID" type="xs:string" use="optional"/>
+		<xs:attribute name="instanceAuthor" type="xs:string" use="optional"/>
+		<xs:attribute name="creationDate" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="lastModificationDate" type="xs:dateTime" use="optional"/>
+	</xs:attributeGroup>
+	
+	<xs:attributeGroup name="defaultAttributes">
+		<xs:annotation>
+			<xs:documentation>Group of attributes used for all objects in an XMCDA instance</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+		<xs:attribute name="name" type="xs:string" use="optional"/>
+		<xs:attribute name="mcdaConcept" type="xs:string" use="optional"/>
+	</xs:attributeGroup>
+	
+	<xs:attributeGroup name="defaultAttributesIDRequired">
+		<xs:annotation>
+			<xs:documentation>Group of attributes used for all objects in an XMCDA instance</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="optional"/>
+		<xs:attribute name="mcdaConcept" type="xs:string" use="optional"/>
+	</xs:attributeGroup>
+	
+	<xs:complexType name="projectReference">
+		<xs:annotation>
+			<xs:documentation>Description of a particular MCDA instance file</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base='xmcda:description'>
+				<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="methodMessages">
+		<xs:annotation>
+			<xs:documentation> XMCDA method messages </xs:documentation>
+		</xs:annotation>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="description" type="xmcda:description"/>
+			<xs:element name="errorMessage" type="xmcda:message"/>
+			<xs:element name="logMessage" type="xmcda:message"/>
+			<xs:element name="message" type="xmcda:message"/>
+		</xs:choice>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="message">
+		<xs:annotation>
+			<xs:documentation>XMCDA generic method message structure.</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="number" type="xs:integer" minOccurs="0"/>
+			<xs:element name="text" type="xs:string" minOccurs="0"/>
+		</xs:all>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="description">
+		<xs:annotation>
+			<xs:documentation> The generic description type is used to describe any individual in the XMCDA instance. The optional title, subTitle and subSubTitle elements, if present, must preceed all other elements as they are used by the default XSL transformation to HTML (xmcdaDefault.xsl) with the corresponding h1, h2 and h3 tags. The names of the elements suggest their standard use. In the default html transformation these description elements appear in the order of the instance with tagName and value. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="title" minOccurs="0" maxOccurs="1" type="xs:string"/>
+			<xs:element name="subTitle" minOccurs="0" maxOccurs="1" type="xs:string"/>
+			<xs:element name="subSubTitle" minOccurs="0" maxOccurs="1" type="xs:string"/>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="user" minOccurs="0" maxOccurs="1" type="xs:string"/>
+				<xs:element name="author" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+				<xs:element name="version" minOccurs="0" maxOccurs="1" type="xs:string"/>
+				<xs:element name="creationDate" minOccurs="0" maxOccurs="1" type="xs:dateTime"/>
+				<xs:element name="lastModificationDate" minOccurs="0" maxOccurs="1" type="xs:dateTime"/>
+				<xs:element name="shortName" minOccurs="0" maxOccurs="1" type="xs:string"/>
+				<xs:element name="comment" minOccurs="0" maxOccurs="1" type="xs:string"/>
+				<xs:element name="abstract" minOccurs="0" maxOccurs="1" type="xs:string"/>
+				<xs:element name="keywords" minOccurs="0" maxOccurs="1" type="xs:string"/>
+				<xs:element name="bibliography" minOccurs="0" maxOccurs="1" type="xmcda:bibliography"/>
+				<xs:element name="stakeholders" minOccurs="0" maxOccurs="1" type="xs:string"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="bibliography">
+		<xs:annotation>
+			<xs:documentation>A list of bibliographical entries</xs:documentation>
+		</xs:annotation>
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="bibEntry" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:choice>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="methodParameters">
+		<xs:annotation>
+			<xs:documentation> Method description and method specific options (example: approach : outranking; problematique : choice; methodology : Rubis)</xs:documentation>
+		</xs:annotation>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="approach" type="xs:string" minOccurs="0"/>
+			<xs:element name="problematique" type="xs:string" minOccurs="0"/>
+			<xs:element name="methodology" type="xs:string" minOccurs="0"/>
+			<!-- <xs:element name="options" type="xmcda:options" minOccurs="0"/> --> 
+			<!-- <xs:element name="option" type="xmcda:value" minOccurs="0" maxOccurs="unbounded"/> -->
+			<xs:element name="parameters" type="xmcda:parameters" minOccurs="0"/>
+			<xs:element name="parameter" type="xmcda:parameter" minOccurs="0"/>
+		</xs:choice>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="parameters">
+		<xs:annotation>
+			<xs:documentation>List of named parameters.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+			<xs:element name="parameter" minOccurs="1" maxOccurs="unbounded"
+				type="xmcda:parameter"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="parameter">
+		<xs:annotation>
+			<xs:documentation>
+				A parameter.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description"  minOccurs="0" maxOccurs="1"/>
+			<xs:choice>
+				<xs:element name="value" type="xmcda:value"/>
+				<xs:element name="function" type="xmcda:function" />
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="variable">
+		<xs:annotation>
+			<xs:documentation>
+				A variable (for linear constraints for example).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description"  minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<!-- <xs:complexType name="options">
+		<xs:annotation>
+			<xs:documentation>A set of options</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="option" type="xmcda:value" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType> -->
+
+	<!-- XMCDA types declarations for alternatives -->
+
+
+	<xs:complexType name="alternativesSets">
+		<xs:annotation>
+			<xs:documentation>A set of alternatives sets.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="alternativesSet" type="xmcda:alternativesSet" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="alternativesSet">
+		<xs:annotation>
+			<xs:documentation>A "valued", possibly ordered, set of alternatives</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="element" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="alternativeID" type="xs:string"/>
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="rank" type="xmcda:value"/>
+							<xs:element name="value" type="xmcda:value"/>
+							<xs:element name="values" type="xmcda:values"/>
+						</xs:choice>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="value" type="xmcda:value"/>
+				<xs:element name="values" type="xmcda:values"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="alternatives">
+		<xs:annotation>
+			<xs:documentation> A list of alternatives' descriptions. </xs:documentation>
+		</xs:annotation>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="alternative" type="xmcda:alternative" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:choice>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="alternative">
+		<xs:annotation>
+			<xs:documentation> A detailed description of an alternative instance. </xs:documentation>
+		</xs:annotation>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="type" minOccurs="0" maxOccurs="1" type="xmcda:alternativeType">
+				<xs:annotation>
+					<xs:documentation>type defines whether an alternative is real or fictive. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="active" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation> active defines whether an alternative should be taken into account or not in the calculations. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reference" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation> reference defines whether an alternative is considered as a reference alternative or not. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+		<xs:attributeGroup ref="xmcda:defaultAttributesIDRequired"/>
+	</xs:complexType>
+
+	<xs:complexType name="alternativesValues">
+		<xs:annotation>
+			<xs:documentation>A set of alternativeValue-type objects. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="alternativeValue" type="xmcda:alternativeValue" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="alternativeValue">
+		<xs:annotation>
+			<xs:documentation>Data on an alternative, a set of alternatives or generic alternatives-related values. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="alternativeID" type="xs:string"/>
+				<xs:element name="alternativesSetID" type="xs:string"/>
+				<xs:element name="alternativesSet" type="xmcda:alternativesSet">
+				</xs:element>
+			</xs:choice>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="value" type="xmcda:value"/>
+				<xs:element name="values" type="xmcda:values"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="alternativeReference">
+		<xs:annotation>
+			<xs:documentation>Generic type for alternatives, choices and list of alternatives references.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="alternativeID" type="xs:string"/>
+			<xs:element name="alternativesSetID" type="xs:string"/>
+			<xs:element name="alternativesSet" type="xmcda:alternativesSet"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="alternativesLinearConstraints">
+		<xs:annotation>
+			<xs:documentation>Represents a set of linear constraints on the alternatives.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="constraint" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>A linear constraint related to alternatives.</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element name="constraintNumber" type="xs:int" minOccurs="0"/>
+						<xs:element name="element"  maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:choice minOccurs="0">
+										<xs:element name="alternativeID" type="xs:string"/>
+										<xs:element name="alternativesSetID" type="xs:string"/>
+										<xs:element name="alternativesSet" type="xmcda:alternativesSet"/>
+										<xs:element name="variable" type="xmcda:variable"/>
+									</xs:choice>
+									<xs:element name="coefficient" type="xmcda:numericValue"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="rhs" type="xmcda:numericValue"/>
+						<xs:element name="operator" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="geq"/>
+									<xs:enumeration value="eq"/>
+									<xs:enumeration value="leq"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="value" type="xmcda:value" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="operator" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="geq"/>
+						<xs:enumeration value="eq"/>
+						<xs:enumeration value="leq"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="alternativesAffectations">
+		<xs:annotation>
+			<xs:documentation>A set of alternativeAffectation-like objects.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="alternativeAffectation" type="xmcda:alternativeAffectation" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="alternativeAffectation">
+		<xs:annotation>
+			<xs:documentation>An alternative and the categories to which it belongs. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="alternativeID" type="xs:string"/>
+				<xs:element name="alternativesSetID" type="xs:string"/>
+				<xs:element name="alternativesSet" type="xmcda:alternativesSet">
+				</xs:element>
+			</xs:choice>
+			<xs:choice>
+				<xs:element name="categoryID" type="xs:string"/>
+				<xs:element name="categoriesSetID" type="xs:string"/>
+				<xs:element name="categoriesSet" type="xmcda:categoriesSet"/>
+				<xs:element name="categoriesInterval" type="xmcda:categoriesInterval"/>
+			</xs:choice>
+			<xs:element name="value" type="xmcda:value" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+
+	<xs:complexType name="alternativesComparisons">
+		<xs:annotation>
+			<xs:documentation>Generic type for valued binary relations on alternatives.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
+			<xs:element name="comparisonType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>We suggest to use the following strings: preference, indifference, incomparability, outranking, geq (greater than or equal), leq (less than or equal), eq (equal), neq (not equal), gtr (greater), less (less), or any personnalised strings determining the type of relation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pairs">
+				<xs:annotation>
+					<xs:documentation>A set of pairs.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="pair" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+									<xs:element name="initial" type="xmcda:alternativeReference"/>
+									
+									<xs:element name="terminal" type="xmcda:alternativeReference"/>
+									
+									<xs:element name="value" type="xmcda:value" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="alternativesMatrix">
+		<xs:annotation>
+			<xs:documentation>Generic type for a matrix on alternatives.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
+			<xs:element name="row" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>A row of a matrix.</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+						<xs:choice>
+							<xs:element name="alternativeID" type="xs:string"/>
+							<xs:element name="alternativesSetID" type="xs:string"/>
+							<xs:element name="alternativesSet" type="xmcda:alternativesSet"/>
+						</xs:choice>
+						<xs:element name="column" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+									<xs:choice>
+										<xs:element name="alternativeID" type="xs:string"/>
+										<xs:element name="alternativesSetID" type="xs:string"/>
+										<xs:element name="alternativesSet" type="xmcda:alternativesSet"/>
+									</xs:choice>
+									<xs:element name="value" type="xmcda:value" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<!-- XMCDA types declarations for criteria -->
+	
+
+	<xs:complexType name="criteriaSets">
+		<xs:annotation>
+			<xs:documentation>A set of criteria sets.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="criteriaSet" type="xmcda:criteriaSet" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="criteriaSet">
+		<xs:annotation>
+			<xs:documentation>A "valued", possibly ordered, set of criteria. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			 <xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="element" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="criterionID" type="xs:string"/>
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="rank" type="xmcda:value"/>
+							<xs:element name="value" type="xmcda:value"/>
+							<xs:element name="values" type="xmcda:values"/>
+						</xs:choice>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="value" type="xmcda:value"/>
+				<xs:element name="values" type="xmcda:values"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="criteria">
+		<xs:annotation>
+			<xs:documentation> A list of detailed criteria descriptions. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+			<xs:element name="criterion" minOccurs="0" maxOccurs="unbounded" type="xmcda:criterion"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="criterion">
+		<xs:annotation>
+			<xs:documentation>Information related to a single criterion.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="scale" type="xmcda:scale" minOccurs="0"/>
+				<xs:element name="criterionFunction" type="xmcda:function" minOccurs="0"></xs:element>
+				<xs:element name="criterionValue" type="xmcda:criterionValue" minOccurs="0"/>
+				<xs:element name="thresholds" type="xmcda:thresholds" minOccurs="0"/>
+				<xs:element name="attributeReference" type="xmcda:attributeReference" minOccurs="0"/>
+				<xs:element name="criterionReference" type="xmcda:criterionReference" minOccurs="0"/>
+				
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributesIDRequired"/>
+	</xs:complexType>
+	
+
+	<xs:complexType name="criterionReference">
+		<xs:annotation>
+			<xs:documentation>Generic type for criterion, coalition and list of criteria references.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="criterionID" type="xs:string"/>
+			<xs:element name="criteriaSetID" type="xs:string"/>
+			<xs:element name="criteriaSet" type="xmcda:criteriaSet"/>
+		</xs:choice>
+	</xs:complexType>
+	
+	<xs:complexType name="attributeReference">
+		<xs:annotation>
+			<xs:documentation>Generic type for criterion, coalition and list of criteria references.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="attributeID" type="xs:string"/>
+			<xs:element name="attributesSetID" type="xs:string"/>
+			<xs:element name="attributeSet" type="xmcda:attributesSet"/>
+		</xs:choice>
+	</xs:complexType>
+	
+	<xs:complexType name="criteriaLinearConstraints">
+		<xs:annotation>
+			<xs:documentation>Represents a set of linear constraints on the criteria.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="constraint" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>A linear constraint related to criteria.</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element name="constraintNumber" type="xs:int" minOccurs="0"/>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+						<xs:element name="element"  maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:choice minOccurs="0">
+										<xs:element name="criterionID" type="xs:string"/>
+										<xs:element name="criteriaSetID" type="xs:string"/>
+										<xs:element name="criteriaSet" type="xmcda:criteriaSet"/>
+										<xs:element name="variable" type="xmcda:variable"/>
+									</xs:choice>
+									<xs:element name="coefficient" type="xmcda:numericValue"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="rhs" type="xmcda:numericValue"/>
+						<xs:element name="operator" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="geq"/>
+									<xs:enumeration value="eq"/>
+									<xs:enumeration value="leq"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="value" type="xmcda:value" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="operator" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="geq"/>
+						<xs:enumeration value="eq"/>
+						<xs:enumeration value="leq"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="criteriaValues">
+		<xs:annotation>
+			<xs:documentation>A set of criterionValue-type objects. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="criterionValue" type="xmcda:criterionValue" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="criterionValue">
+		<xs:annotation>
+			<xs:documentation>Data on a criterion, a set of criteria or generic criteria-related value. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="criterionID" type="xs:string"/>
+				<xs:element name="criteriaSetID" type="xs:string"/>
+				<xs:element name="criteriaSet" type="xmcda:criteriaSet">
+				</xs:element>
+			</xs:choice>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="value" type="xmcda:value"/>
+				<xs:element name="values" type="xmcda:values"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="criteriaComparisons">
+		<xs:annotation>
+			<xs:documentation>Generic type for valued binary relations on criteria.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
+			<xs:element name="comparisonType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>We suggest to use the following strings: preference, indifference, incomparability, outranking, geq (greater than or equal), leq (less than or equal), eq (equal), neq (not equal), gtr (greater), less (less), or any personnalised strings determining the type of relation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pairs">
+				<xs:annotation>
+					<xs:documentation>A set of pairs.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="pair" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+									<xs:element name="initial" type="xmcda:criterionReference"/>
+									<xs:element name="terminal" type="xmcda:criterionReference"/>
+									<xs:choice minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="value" type="xmcda:value"/>
+										<xs:element name="values" type="xmcda:values"/>
+									</xs:choice>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="criteriaMatrix">
+		<xs:annotation>
+			<xs:documentation>Generic type for a matrix on criteria.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
+			<xs:element name="row" minOccurs="1" maxOccurs="unbounded">
+			<xs:complexType>
+				<xs:annotation>
+					<xs:documentation>A row of a matrix.</xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+					<xs:choice>
+						<xs:element name="criterionID" type="xs:string"/>
+						<xs:element name="criteriaSetID" type="xs:string"/>
+						<xs:element name="criteriaSet" type="xmcda:criteriaSet"/>
+					</xs:choice>
+					<xs:element name="column" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+								<xs:choice>
+									<xs:element name="criterionID" type="xs:string"/>
+									<xs:element name="criteriaSetID" type="xs:string"/>
+									<xs:element name="criteriaSet" type="xmcda:criteriaSet"/>
+								</xs:choice>
+								<xs:element name="value" type="xmcda:value" minOccurs="0"/>
+								
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+			</xs:complexType>
+				</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	
+	<!-- XMCDA types declarations for criteria -->
+	
+	
+	<xs:complexType name="attributesSets">
+		<xs:annotation>
+			<xs:documentation>A set of attributes sets.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="attributesSet" type="xmcda:attributesSet" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="attributesSet">
+		<xs:annotation>
+			<xs:documentation>A "valued", possibly ordered, set of attributes. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="element" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="attributeID" type="xs:string"/>
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="rank" type="xmcda:value"/>
+							<xs:element name="value" type="xmcda:value"/>
+							<xs:element name="values" type="xmcda:values"/>
+						</xs:choice>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="value" type="xmcda:value"/>
+				<xs:element name="values" type="xmcda:values"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="attributes">
+		<xs:annotation>
+			<xs:documentation> A list of detailed criteria descriptions. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+			<xs:element name="attribute" minOccurs="0" maxOccurs="unbounded" type="xmcda:attribute"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="attribute">
+		<xs:annotation>
+			<xs:documentation>Information related to a single attribute.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="scale" type="xmcda:scale" minOccurs="0"/>
+				<xs:element name="attributeFunction" type="xmcda:function" minOccurs="0"/>
+				<xs:element name="thresholds" type="xmcda:thresholds" minOccurs="0"/>
+				<xs:element name="attributeReference" type="xmcda:attributeReference" minOccurs="0"/>
+				<xs:element name="criterionReference" type="xmcda:criterionReference" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributesIDRequired"/>
+	</xs:complexType>
+	
+	<xs:complexType name="attributesLinearConstraints">
+		<xs:annotation>
+			<xs:documentation>Represents a set of linear constraints on the criteria.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="constraint" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>A linear constraint related to criteria.</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element name="constraintNumber" type="xs:int" minOccurs="0"/>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+						<xs:element name="element"  maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:choice minOccurs="0">
+										<xs:element name="attributeID" type="xs:string"/>
+										<xs:element name="attributesSetID" type="xs:string"/>
+										<xs:element name="attributesSet" type="xmcda:attributesSet"/>
+										<xs:element name="variable" type="xmcda:variable"/>
+									</xs:choice>
+									<xs:element name="coefficient" type="xmcda:numericValue"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="rhs" type="xmcda:numericValue"/>
+						<xs:element name="operator" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="geq"/>
+									<xs:enumeration value="eq"/>
+									<xs:enumeration value="leq"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="value" type="xmcda:value" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="operator" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="geq"/>
+						<xs:enumeration value="eq"/>
+						<xs:enumeration value="leq"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="attributesValues">
+		<xs:annotation>
+			<xs:documentation>A set of attributeValue-type objects. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="attributeValue" type="xmcda:attributeValue" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="attributeValue">
+		<xs:annotation>
+			<xs:documentation>Data on a criterion, a set of criteria or generic criteria-related value. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="attributeID" type="xs:string"/>
+				<xs:element name="attributesSetID" type="xs:string"/>
+				<xs:element name="attributesSet" type="xmcda:attributesSet">
+				</xs:element>
+			</xs:choice>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="value" type="xmcda:value"/>
+				<xs:element name="values" type="xmcda:values"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="attributesComparisons">
+		<xs:annotation>
+			<xs:documentation>Generic type for valued binary relations on attributes.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
+			<xs:element name="comparisonType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>We suggest to use the following strings: preference, indifference, incomparability, outranking, geq (greater than or equal), leq (less than or equal), eq (equal), neq (not equal), gtr (greater), less (less), or any personnalised strings determining the type of relation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pairs">
+				<xs:annotation>
+					<xs:documentation>A set of pairs.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="pair" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+									<xs:element name="initial" type="xmcda:attributeReference"/>
+									<xs:element name="terminal" type="xmcda:attributeReference"/>
+									<xs:choice minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="value" type="xmcda:value"/>
+										<xs:element name="values" type="xmcda:values"/>
+									</xs:choice>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="attributesMatrix">
+		<xs:annotation>
+			<xs:documentation>Generic type for a matrix on attributes.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
+			<xs:element name="row" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>A row of a matrix.</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+						<xs:choice>
+							<xs:element name="attributeID" type="xs:string"/>
+							<xs:element name="attributesSetID" type="xs:string"/>
+							<xs:element name="attributesSet" type="xmcda:attributesSet"/>
+						</xs:choice>
+						<xs:element name="column" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+									<xs:choice>
+										<xs:element name="attributeID" type="xs:string"/>
+										<xs:element name="attributesSetID" type="xs:string"/>
+										<xs:element name="attributesSet" type="xmcda:attributesSet"/>
+									</xs:choice>
+									<xs:element name="value" type="xmcda:value" minOccurs="0"/>
+									
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<!-- XMCDA types declarations for alternatives and criteria -->
+	
+	<xs:complexType name="alternativesCriteriaValues">
+		<xs:annotation>
+			<xs:documentation>A crosstable alternatives x criteria. A list of alternativeCriteriaValue-type objects representing the rows of that crosstable. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="alternativeCriteriaValue" type="xmcda:alternativeCriteriaValue" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="alternativeCriteriaValue">
+		<xs:annotation>
+			<xs:documentation>A row in a crosstable alternatives x criteria.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+			<xs:element name="alternativeID" minOccurs="0" type="xs:string"/>
+			<xs:element name="criterionValue" type="xmcda:criterionValue" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<!-- XMCDA types declarations for categories -->
+
+
+	<xs:complexType name="categoriesSets">
+		<xs:annotation>
+			<xs:documentation>A set of categories sets.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="categoriesSet" type="xmcda:categoriesSet" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="categoriesSet">
+		<xs:annotation>
+			<xs:documentation>A "valued", possibly ordered, set of categories.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="element" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="categoryID" type="xs:string"/>
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="rank" type="xmcda:value"/>
+							<xs:element name="value" type="xmcda:value"/>
+							<xs:element name="values" type="xmcda:values"/>
+						</xs:choice>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="value" type="xmcda:value"/>
+				<xs:element name="values" type="xmcda:values"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="categoriesInterval">
+		<xs:annotation>
+			<xs:documentation>A "valued" set of categories.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="lowerBound" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="categoryID" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="upperBound" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="categoryID" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="categories">
+		<xs:sequence>
+			<xs:annotation>
+				<xs:documentation>A set of categories and some preferential information on them.</xs:documentation>
+			</xs:annotation>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="category" type="xmcda:category" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="category">
+		<xs:annotation>
+			<xs:documentation>A category, ordered or not (see rank). </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="active" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation> Defines whether an alternative should be taken into account or not in the calculations. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rank" type="xmcda:value" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributesIDRequired"/>
+	</xs:complexType>
+
+	<xs:complexType name="categoryReference">
+		<xs:annotation>
+			<xs:documentation>Generic type for categories, categoriesSet or categories references.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="categoryID" type="xs:string"/>
+			<xs:element name="categoriesSetID" type="xs:string"/>
+			<xs:element name="categoriesSet" type="xmcda:categoriesSet"/>
+		</xs:choice>
+	</xs:complexType>
+	
+	<xs:complexType name="categoriesProfiles">
+		<xs:annotation>
+			<xs:documentation>A list of category profiles</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="categoryProfile" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoryProfile"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="categoryProfile">
+		<xs:annotation>
+			<xs:documentation> A detailed description of an category profile instance. </xs:documentation>
+		</xs:annotation>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="alternativeID" type="xs:string" minOccurs="0"/>
+			<xs:choice>
+				<xs:element name="central">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="categoryID" type="xs:string"/>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:element name="value" type="xmcda:value"/>
+								<xs:element name="values" type="xmcda:values"/>
+							</xs:choice>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="limits">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="lowerCategory">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="categoryID" type="xs:string"/>
+										<xs:choice minOccurs="0" maxOccurs="unbounded">
+											<xs:element name="value" type="xmcda:value"/>
+											<xs:element name="values" type="xmcda:values"/>
+										</xs:choice>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="upperCategory">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="categoryID" type="xs:string"/>
+										<xs:choice minOccurs="0" maxOccurs="unbounded">
+											<xs:element name="value" type="xmcda:value"/>
+											<xs:element name="values" type="xmcda:values"/>
+										</xs:choice>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+			</xs:choice>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="value" type="xmcda:value"/>
+				<xs:element name="values" type="xmcda:values"/>
+			</xs:choice>
+		</xs:choice>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="categoriesLinearConstraints">
+		<xs:annotation>
+			<xs:documentation>Represents a set of linear constraints on the categories.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="constraint" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>A linear constraint related to categories.</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element name="constraintNumber" type="xs:int" minOccurs="0"/>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+						<xs:element name="element"  maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:choice minOccurs="0">
+										<xs:element name="categoryID" type="xs:string"/>
+										<xs:element name="categoriesSetID" type="xs:string"/>
+										<xs:element name="categoriesSet" type="xmcda:categoriesSet"/>
+										<xs:element name="variable" type="xmcda:variable"/>
+									</xs:choice>
+									<xs:element name="coefficient" type="xmcda:numericValue"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="rhs" type="xmcda:numericValue"/>
+						<xs:element name="operator" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="geq"/>
+									<xs:enumeration value="eq"/>
+									<xs:enumeration value="leq"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="value" type="xmcda:value" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="operator" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="geq"/>
+						<xs:enumeration value="eq"/>
+						<xs:enumeration value="leq"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="categoriesValues">
+		<xs:annotation>
+			<xs:documentation>A set of categoryValue-type objects. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="categoryValue" type="xmcda:categoryValue" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string"/>
+	</xs:complexType>
+	
+	<xs:complexType name="categoryValue">
+		<xs:annotation>
+			<xs:documentation>Data on a category, a set of categories or generic category-related values. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="categoryID" type="xs:string"/>
+				<xs:element name="categoriesSetID" type="xs:string"/>
+				<xs:element name="categoriesSet" type="xmcda:categoriesSet">
+				</xs:element>
+			</xs:choice>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="value" type="xmcda:value"/>
+				<xs:element name="values" type="xmcda:values"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string"/>
+	</xs:complexType>
+
+	<xs:complexType name="categoriesContents">
+		<xs:annotation>
+			<xs:documentation>A set of categoryContent-like objects.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="categoryContent" type="xmcda:categoryContent" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="categoryContent">
+		<xs:annotation>
+			<xs:documentation>A category and the alternatives which belong to it. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="categoryID" type="xs:string"/>
+			<xs:choice>
+				<xs:element name="alternativesSet" type="xmcda:alternativesSet"/>
+				<xs:element name="alternativesSetID" type="xs:string"/>
+			</xs:choice>      
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="categoriesComparisons">
+		<xs:annotation>
+			<xs:documentation>Generic type for valued binary relations on categories.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
+			<xs:element name="comparisonType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>We suggest to use the following strings: preference, indifference, incomparability, outranking, geq (greater than or equal), leq (less than or equal), eq (equal), neq (not equal), gtr (greater), less (less), or any personnalised strings determining the type of relation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="pairs">
+				<xs:annotation>
+					<xs:documentation>A set of pairs.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="pair" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+									<xs:element name="initial" type="xmcda:categoryReference"/>
+									<xs:element name="terminal" type="xmcda:categoryReference"/>
+									<xs:choice minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="value" type="xmcda:value"/>
+										<xs:element name="values" type="xmcda:values"/>
+									</xs:choice>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="categoriesMatrix">
+		<xs:annotation>
+			<xs:documentation>Generic type for a matrix on categories.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
+			<xs:element name="row" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>A row of a matrix.</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+						<xs:choice minOccurs="0">
+							<xs:element name="categoryID" type="xs:string"/>
+							<xs:element name="categoriesSetID" type="xs:string"/>
+							<xs:element name="categoriesSet" type="xmcda:categoriesSet"/>
+						</xs:choice>
+						<xs:element name="column" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+									<xs:choice minOccurs="0">
+										<xs:element name="categoryID" type="xs:string"/>
+										<xs:element name="categoriesSetID" type="xs:string"/>
+										<xs:element name="categoriesSet" type="xmcda:categoriesSet"/>
+									</xs:choice>
+									<xs:element name="value" type="xmcda:value" minOccurs="0"/>
+									
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+
+	<!-- XMCDA types declarations for performanceTable -->
+
+
+	<xs:complexType name="performanceTable">
+		<xs:annotation>
+			<xs:documentation>A crosstable Alternatives x Criteria showing the performances of the alternatives on the criteria.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+			<xs:element name="alternativePerformances" maxOccurs="unbounded" type="xmcda:alternativeOnCriteriaPerformances"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="alternativeOnCriteriaPerformances">
+		<xs:annotation>
+			<xs:documentation>The performance of an alternative on the set of criteria.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+			<xs:element name="alternativeID" minOccurs="0" type="xs:string"/>
+			<xs:element name="performance" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Performance valuation of an alternative on a single criterion.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+						<xs:choice>
+							<xs:element name="criterionID" type="xs:string"/>
+							<xs:element name="attributeID" type="xs:string"/>
+						</xs:choice>
+						<xs:element name="value" type="xmcda:value" minOccurs="0"/>
+						
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+
+	<!-- Tools classes -->
+
+
+	<xs:complexType name="thresholds">
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="threshold" type="xmcda:function" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="values">
+		<xs:annotation>
+			<xs:documentation>List of generic values</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="value" type="xmcda:value" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="value">
+		<xs:annotation>
+			<xs:documentation>Generic value type with configurable named parameters</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:choice>
+				<xs:element name="integer" type="xs:int"/>
+				<xs:element name="real" type="xs:float"/>
+				<xs:element name="interval" type="xmcda:interval"/>
+				<xs:element name="rational" type="xmcda:rational"/>
+				<xs:element name="label" type="xs:string"/>
+				<xs:element name="rankedLabel" type="xmcda:rankedLabel"/>
+				<xs:element name="boolean" type="xs:boolean"></xs:element>
+				<xs:element name="NA" type="xs:string"/>
+				<xs:element name="image" type="xs:base64Binary"/>
+				<xs:element name="imageRef" type="xs:string"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="numericValue">
+		<xs:annotation>
+			<xs:documentation>Restriction of the XMCDA Value type to single numeric values of type: integer, real, rational and NA.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:restriction base="xmcda:value">
+				<xs:sequence>
+					<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+					<xs:choice>
+						<xs:element name="integer" type="xs:int"/>
+						<xs:element name="real" type="xs:float"/>
+						<xs:element name="rational" type="xmcda:rational"/>
+						<xs:element name="NA" type="xs:string"/>
+					</xs:choice>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="interval">
+		<xs:annotation>
+			<xs:documentation> Represents an interval via a lower and an upper bound, which are real numbers.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="lowerBound" type="xmcda:value" minOccurs="0"/>
+				<!-- <xs:complexType>
+					<xs:choice>
+						<xs:element name="value" type="xmcda:numericValue"/>
+						<xs:element name="rankedLabel" type="xmcda:rankedLabel"/>
+					</xs:choice>
+				</xs:complexType>-->
+			
+			<xs:element name="upperBound" type="xmcda:value" minOccurs="0"/>
+			<!--	<xs:complexType>
+					<xs:choice>
+						<xs:element name="value" type="xmcda:numericValue"/>
+						<xs:element name="rankedLabel" type="xmcda:rankedLabel"/>
+					</xs:choice> 
+				</xs:complexType>-->
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rational">
+		<xs:sequence>
+			<xs:element name="numerator" type="xs:int"/>
+			<xs:element name="denominator" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rankedLabel">
+		<xs:annotation>
+			<xs:documentation>Label which has a certain rank.</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="label" type="xs:string"/>
+			<xs:element name="rank" type="xs:integer"/>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="nominal">
+		<xs:annotation>
+			<xs:documentation>Represents a scale type of unordered labels.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="label" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="qualitative">
+		<xs:annotation>
+			<xs:documentation>Scale type of qualitative ordered levels. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="preferenceDirection" type="xmcda:preferenceDirection" minOccurs="0"/>
+			<xs:element name="rankedLabel" type="xmcda:rankedLabel" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="quantitative">
+		<xs:annotation>
+			<xs:documentation> Represents a scale type which is quantitative. It is described by a preference direction (min or max), and a minimal and maximal quantitative evaluation. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="preferenceDirection" type="xmcda:preferenceDirection" minOccurs="0"/>
+			<xs:element name="minimum" type="xmcda:numericValue" minOccurs="0"/>
+			<xs:element name="maximum" type="xmcda:numericValue" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="function">
+		<xs:annotation>
+			<xs:documentation>A general function which can be of one of the following three types: either a constant, a linear function or a piecewise linear function. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:choice>
+				<xs:element name="constant" type="xmcda:numericValue"/>
+				<xs:element name="linear">
+					<xs:annotation>
+						<xs:documentation>A linear function. Requires a slope and an intercept.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="slope" type="xmcda:numericValue"/>
+							<xs:element name="intercept" type="xmcda:numericValue"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="piecewiseLinear">
+					<xs:annotation>
+						<xs:documentation>A piecewise linear function as a list of segments.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="segment" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation> Represents a segment, defined by two points: one for the head, one for the tail.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="head" type="xmcda:point"/>
+										<xs:element name="tail" type="xmcda:point"/>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="points">
+					<xs:annotation>
+						<xs:documentation>A list of points.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="point" type="xmcda:point" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:simpleType name="preferenceDirection">
+		<xs:annotation>
+			<xs:documentation>Preferential direction on a given quantitative scale: either "max" for a scale where the higher values are preferred, or "min" for a scale where the lower values are preferred.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="min"/>
+			<xs:enumeration value="max"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="point">
+		<xs:annotation>
+			<xs:documentation>A point via an abscissa and an ordinate.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="abscissa" type="xmcda:value">
+				<xs:annotation>
+					<xs:documentation>The abscissa of a point.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ordinate" type="xmcda:value">
+				<xs:annotation>
+					<xs:documentation>The ordinate of a point.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="alternativeType">
+		<xs:annotation>
+			<xs:documentation> Potential alternatives are those envisaged for a practical decision execution. Reference alternatives are generally fictive ones used for preference elicitation purposes. </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="real"/>
+			<xs:enumeration value="fictive"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="valuationType">
+		<xs:annotation>
+			<xs:documentation>Type of alternative.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="standard"/>
+			<xs:enumeration value="bipolar"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="status">
+		<xs:annotation>
+			<xs:documentation>Allows to mark an object as active or inactive in the current study step.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="active"/>
+			<xs:enumeration value="inactive"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="scale">
+		<xs:annotation>
+			<xs:documentation>Description of a scale. Choice between 3 types of scales: nominal, qualitative and quantitative. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="valuationType" type="xmcda:valuationType" minOccurs="0"/>
+			<xs:choice>
+				<xs:element name="nominal" type="xmcda:nominal"/>
+				<xs:element name="qualitative" type="xmcda:qualitative"/>
+				<xs:element name="quantitative" type="xmcda:quantitative"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+	<xs:complexType name="hierarchy">
+		<xs:annotation>
+			<xs:documentation>Description of a hierarchy. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="node" type="xmcda:node" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="node">
+		<xs:annotation>
+			<xs:documentation>Description of a hierarchy. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="attributeID" type="xs:string"/>
+				<xs:element name="attributeSetID" type="xs:string"/>
+				<xs:element name="attributesSet" type="xmcda:attributesSet"/>
+				<xs:element name="criterionID" type="xs:string"/>
+				<xs:element name="criteriaSetID" type="xs:string"/>
+				<xs:element name="criteriaSet" type="xmcda:criteriaSet"/>
+				<xs:element name="alternativeID" type="xs:string"/>
+				<xs:element name="alternativesSetID" type="xs:string"/>
+				<xs:element name="alternativesSet" type="xmcda:alternativesSet"/>
+				<xs:element name="categoryID" type="xs:string"/>
+				<xs:element name="categoriesSetID" type="xs:string"/>
+				<xs:element name="categoriesSet" type="xmcda:categoriesSet"/>
+			</xs:choice>
+			<xs:element name="value" type="xmcda:value" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="node" type="xmcda:node" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+
+</xs:schema>
