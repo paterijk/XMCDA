@@ -132,6 +132,13 @@
 				<xsl:for-each select="./methodology">
 					<li>Methodoly: <value-of select="."/></li>
 				</xsl:for-each>
+				<xsl:for-each select="./parameters">
+					<li><B><xsl:value-of select="@name"/></B><UL>
+						<xsl:for-each select="./parameter">
+						<li><xsl:value-of select="@name"/> : <xsl:value-of select="." /></li>
+					</xsl:for-each>
+					</UL></li>
+				</xsl:for-each>
 				<xsl:for-each select="./parameter">
 					<li><B><xsl:value-of select="@name"/></B> = <xsl:value-of select="." /></li>
 				</xsl:for-each>
@@ -501,6 +508,50 @@
 </xsl:template>
 
 
+<xsl:template match="alternativesCriteriaValues">
+	<div class="bloc">
+		<div class="classTitle">
+			<xsl:choose>
+				<xsl:when test="@mcdaConcept"><xsl:value-of select="@mcdaConcept"/></xsl:when>
+				<xsl:otherwise>Alternatives criteria values</xsl:otherwise>
+			</xsl:choose>
+		</div>
+		
+		<xsl:apply-templates select="description"/>
+			
+			
+		<xsl:variable name="numTable" select="position()"/>
+		<xsl:choose>
+			<xsl:when test="@id"><div class="classSubTitle"><xsl:value-of select="@id"/></div></xsl:when>
+		</xsl:choose>
+		
+		<xsl:apply-templates select="description"/>
+		
+		<xsl:variable name="listCrit" select="alternativeCriteriaValue/criterionValue/criterionID[not(.=following::criterionID)]"/>
+		<table cellspacing='1'>
+			<tr>
+				<td></td>
+				<xsl:for-each select="$listCrit">
+					<td class="header"><xsl:value-of select="."/></td>
+				</xsl:for-each>
+			</tr>
+			<xsl:for-each select="alternativeCriteriaValue/alternativeID[not(.=following::alternativeID)]">
+				<xsl:variable name="altID" select="."/>
+				<tr>
+					<td class="header"><xsl:value-of select="$altID"/></td>
+					<xsl:for-each select="$listCrit">
+						<xsl:variable name="critID" select="."/>
+						<td><xsl:apply-templates select="../../../alternativeCriteriaValue[alternativeID=$altID]/criterionValue[criterionID=$critID]/value"/>
+						</td>
+					</xsl:for-each>
+
+				</tr>
+			</xsl:for-each>
+		</table>
+	</div>
+</xsl:template>
+
+
 <xsl:template match="hierarchy">
 	<xsl:value-of select="."/>
 </xsl:template>
@@ -640,6 +691,7 @@
 							<xsl:when test="criterionID"><xsl:value-of select="criterionID"/></xsl:when>
 							<xsl:when test="criteriaSetID"><xsl:value-of select="criteriaSetID"/></xsl:when>
 							<xsl:when test="criteriaSet"><xsl:apply-templates select="criteriaSet"/></xsl:when>
+							<xsl:when test="variable"><xsl:value-of select="variable/@id"/></xsl:when>
 						</xsl:choose>
 						<xsl:text> </xsl:text>
 					</xsl:for-each>
@@ -651,6 +703,10 @@
 					</xsl:choose>
 					<xsl:text> </xsl:text>
 					<xsl:value-of select="rhs"/>
+					<xsl:if test="./value">(
+						<xsl:if test="@mcdaConcept"><xsl:value-of select="@mcdaConcept"/> :</xsl:if>
+						<xsl:apply-templates select="value"/> )
+					</xsl:if>
 				</li>
 			</xsl:for-each>
 		</ul>
@@ -837,6 +893,10 @@
 					</xsl:choose>
 					<xsl:text> </xsl:text>
 					<xsl:value-of select="rhs"/>
+					<xsl:if test="./value">(
+						<xsl:if test="@mcdaConcept"><xsl:value-of select="@mcdaConcept"/> :</xsl:if>
+						<xsl:apply-templates select="value"/> )
+					</xsl:if>
 				</li>
 			</xsl:for-each>
 		</ul>
@@ -977,7 +1037,22 @@
 				<xsl:when test="terminal/alternativesSetID"><xsl:value-of select="./terminal/alternativesSetID"/></xsl:when>
 				<xsl:when test="terminal/alternativesSet"><xsl:apply-templates select="alternativesSet"/></xsl:when>
 			</xsl:choose>
-			<xsl:text> </xsl:text> (<xsl:apply-templates select="value"/>)
+			<xsl:text> </xsl:text> (
+			<xsl:choose>
+				<xsl:when test="value"><xsl:apply-templates select="value"/></xsl:when>
+				<xsl:when test="values">
+					<xsl:text>&#160;&#160;</xsl:text>
+					<xsl:for-each select="./values/value">
+						<xsl:choose>
+							<xsl:when test="@name"><xsl:value-of select="@name"/>:</xsl:when>
+							<xsl:when test="@id"><xsl:value-of select="@id"/>:</xsl:when>
+							<xsl:otherwise>val:</xsl:otherwise>
+						</xsl:choose>
+						<xsl:apply-templates select="."/><xsl:text>&#160;&#160;</xsl:text>					</xsl:for-each>
+				</xsl:when>
+			</xsl:choose>
+			
+			)
 			</li>
 			</xsl:for-each>
 		</xsl:for-each>
@@ -1016,6 +1091,10 @@
 					</xsl:choose>
 					<xsl:text> </xsl:text>
 					<xsl:value-of select="rhs"/>
+					<xsl:if test="./value">(
+						<xsl:if test="@mcdaConcept"><xsl:value-of select="@mcdaConcept"/> :</xsl:if>
+						<xsl:apply-templates select="value"/> )
+					</xsl:if>
 				</li>
 			</xsl:for-each>
 		</ul>
@@ -1098,16 +1177,20 @@
 	<li>
 		<xsl:choose>
 			<xsl:when test="./alternativeID"><xsl:value-of select="./alternativeID"/></xsl:when>
-			<xsl:when test="./categoriesSetID"><xsl:value-of select="./categoriesSetID"/></xsl:when>
+			<xsl:when test="./alternativesSetID"><xsl:value-of select="./alternativesSetID"/></xsl:when>
 			<xsl:when test="./alternativesSet"> alternatives set <xsl:apply-templates select="alternativesSet"/> </xsl:when>
 		</xsl:choose>
 		 -> 
 		 <xsl:choose>
 			<xsl:when test="./categoryID"><xsl:value-of select="./categoryID"/></xsl:when>
-			<xsl:when test="./alternativesSetID"><xsl:value-of select="./alternativesSetID"/></xsl:when>
+			<xsl:when test="./categoriesSetID"><xsl:value-of select="./alternativesSetID"/></xsl:when>
 			<xsl:when test="./categoriesSet"> categories set <xsl:apply-templates select="categoriesSet"/> </xsl:when>
 			<xsl:when test="./categoriesInterval"><xsl:apply-templates select="categoriesInterval"/></xsl:when>
 		</xsl:choose>
+		<xsl:if test="./value">(
+			<xsl:if test="@mcdaConcept"><xsl:value-of select="@mcdaConcept"/> :</xsl:if>
+			<xsl:apply-templates select="value"/> )
+		</xsl:if>
 		<xsl:apply-templates select="description"/>
 	</li>
 </xsl:template>
@@ -1245,6 +1328,10 @@
 					</xsl:choose>
 					<xsl:text> </xsl:text>
 					<xsl:value-of select="rhs"/>
+					<xsl:if test="./value">(
+						<xsl:if test="@mcdaConcept"><xsl:value-of select="@mcdaConcept"/> :</xsl:if>
+						<xsl:apply-templates select="value"/> )
+					</xsl:if>
 				</li>
 			</xsl:for-each>
 		</ul>
