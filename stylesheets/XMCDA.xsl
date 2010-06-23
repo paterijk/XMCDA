@@ -132,6 +132,13 @@
 				<xsl:for-each select="./methodology">
 					<li>Methodoly: <value-of select="."/></li>
 				</xsl:for-each>
+				<xsl:for-each select="./parameters">
+					<li><B><xsl:value-of select="@name"/></B><UL>
+						<xsl:for-each select="./parameter">
+						<li><xsl:value-of select="@name"/> : <xsl:value-of select="." /></li>
+					</xsl:for-each>
+					</UL></li>
+				</xsl:for-each>
 				<xsl:for-each select="./parameter">
 					<li><B><xsl:value-of select="@name"/></B> = <xsl:value-of select="." /></li>
 				</xsl:for-each>
