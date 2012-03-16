@@ -1622,6 +1622,7 @@
 				<xs:element name="image" type="xs:base64Binary"/>
 				<xs:element name="imageRef" type="xs:string"/>
 				<xs:element name="fuzzyNumber" type="xmcda:fuzzyNumber"/>
+				<xs:element name="fuzzyLabel" type="xmcda:fuzzyLabel"/>
 			</xs:choice>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>

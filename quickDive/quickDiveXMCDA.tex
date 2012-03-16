@@ -175,12 +175,12 @@ Note that there also exists an \XMCDA type called {\code numericValue} which res
 
 \subsection{Intervals}
 
-The type {\code value} can represent an interval of numeric or ordinal values which are coded as follows.
+{\code lowerBound} and {\code upperBound} tags are of the type {\code value}, so they can represent an interval of numeric or ordinal values which are coded as follows.
 {\code
 \begin{lstlisting}[style=prototype]
  <interval>
-	 <lowerBound><value>[..]</value></lowerBound>
-	 <upperBound><value>[..]</value></upperBound>
+	 <lowerBound><integer>0</integer></lowerBound>
+	 <upperBound><integer>5</integer></upperBound>
  </interval>
 \end{lstlisting}
 
@@ -305,14 +305,12 @@ Certain methods might generate some error or log messages. These can be stored i
 {\code
 \begin{lstlisting}[style=prototype]
  <methodMessages>
-	 <errorMessage>
+	 <errorMessage name="Error 404">
 		 <number>404</number>
-		 <name>Error 404</name>
 		 <message>Data not found. Did you specify a bad file name?</message>
 	 </errorMessage>
 	 <logMessage>
 		 <number>0</number>
-		 <name>OK</name>
 		 <message>Execution successful.</message>
 	 </logMessage>
  </methodMessages>
@@ -384,10 +382,10 @@ Categories are defined under the tag {\code categories} as shown in the followin
  <categories>
 	 <category id="g" name="goodStudents">
 		 <active>true</active>
-	 <category>
+	 </category>
 	 <category id="m" name="mediumStudents">
 		 <active>false</active>
-	 <category>
+	 </category>
   </categories>
 \end{lstlisting}
 }
@@ -405,7 +403,7 @@ The performance table is defined and described under the tag {\code performanceT
 {\code
 \begin{lstlisting}[style=prototype]
  <performanceTable>
-	 <alternativesPerformance>
+	 <alternativePerformances>
 		 <alternativeID>alt1</alternativeID>
 		 <performance>
 			 <criterionID>g1</criterionID>
@@ -415,11 +413,11 @@ The performance table is defined and described under the tag {\code performanceT
 			 <criterionID>g2</criterionID>
 			 <value><real>82.62</real></value>
 		 </performance>
-	 </alternativesPerformance>
-	 <alternativesPerformance>
+	 </alternativePerformances>
+	 <alternativePerformances>
 		 <alternativeID>alt2</alternativeID>
 		 [..]
-	 </alternativesPerformance>
+	 </alternativePerformances>
  </performanceTable>
 \end{lstlisting}
 }
