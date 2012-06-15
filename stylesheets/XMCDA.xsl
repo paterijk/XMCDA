@@ -12,7 +12,7 @@
 	<html>	
 		<head>
 			<title>XMCDA Scheme</title>
-                        <link REL="stylesheet" TYPE="text/css" HREF="cssStyle.css"/>
+                        <link REL="stylesheet" TYPE="text/css" HREF="XMCDA.css"/>
 		</head>
 		<body>
 			<div class="XMCDA">
