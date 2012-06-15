@@ -2,15 +2,15 @@
 
 <xs:schema
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://www.decision-deck.org/2009/XMCDA-2.2.0"
-	xmlns:xmcda="http://www.decision-deck.org/2009/XMCDA-2.2.0">
+	targetNamespace="http://www.decision-deck.org/2012/XMCDA-2.2.0"
+	xmlns:xmcda="http://www.decision-deck.org/2012/XMCDA-2.2.0">
 
 
 	<xs:annotation>
 		<xs:documentation>
 			XMCDA 2.2.0 Schema 
 			Raymond Bisdorff (University of Luxembourg), Patrick MEYER (Telecom Bretagne), Thomas Veneziano (University of Luxembourg).
-			Copyright (C) June 2010 DECISION DECK Consortium
+			Copyright (C) June 2012 DECISION DECK Consortium
 		</xs:documentation>
 	</xs:annotation>
 
@@ -110,6 +110,8 @@
 				<xs:element name="categoriesComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesComparisons"/>
 				<xs:element name="categoriesLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesLinearConstraints"/>
 				<xs:element name="categoriesMatrix" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaMatrix"/>
+				
+				<xs:element name="categoriesLimits" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesLimits"/>
 
 			</xs:choice>
 
@@ -1533,6 +1535,57 @@
 						</xs:element>
 					</xs:sequence>
 					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="categoriesLimits">
+		<xs:annotation>
+			<xs:documentation>A list of categories defined by upper and lower limits</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="categoryLimits" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoryLimits"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="categoryLimits">
+		<xs:annotation>
+			<xs:documentation>The specification of a category by lower and upper limits. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="categoryID" type="xs:string"/>
+			<xs:element name="lowerLimit">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+						<xs:choice minOccurs="0">
+							<xs:element name="alternativeID" type="xs:string"/>
+							<xs:element name="alternativesSetID" type="xs:string"/>
+							<xs:element name="alternativesSet" type="xmcda:alternativesSet"/>
+							<xs:element name="alternativePerformances" maxOccurs="unbounded" type="xmcda:alternativeOnCriteriaPerformances"/>
+						</xs:choice>
+						<xs:element name="value" type="xmcda:value" minOccurs="0"/>
+						<xs:element name="values" type="xmcda:values" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="upperLimit">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="description" minOccurs="0" type="xmcda:description"/>
+						<xs:choice minOccurs="0">
+							<xs:element name="alternativeID" type="xs:string"/>
+							<xs:element name="alternativesSetID" type="xs:string"/>
+							<xs:element name="alternativesSet" type="xmcda:alternativesSet"/>
+							<xs:element name="alternativePerformances" maxOccurs="unbounded" type="xmcda:alternativeOnCriteriaPerformances"/>
+						</xs:choice>
+						<xs:element name="value" type="xmcda:value" minOccurs="0"/>
+						<xs:element name="values" type="xmcda:values" minOccurs="0"/>
+					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
