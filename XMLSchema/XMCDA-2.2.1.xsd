@@ -2,15 +2,15 @@
 
 <xs:schema
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://www.decision-deck.org/2012/XMCDA-2.2.0"
-	xmlns:xmcda="http://www.decision-deck.org/2012/XMCDA-2.2.0">
+	targetNamespace="http://www.decision-deck.org/2012/XMCDA-2.2.1"
+	xmlns:xmcda="http://www.decision-deck.org/2012/XMCDA-2.2.1">
 
 
 	<xs:annotation>
 		<xs:documentation>
-			XMCDA 2.2.0 Schema 
+			XMCDA 2.2.1 Schema 
 			Raymond Bisdorff (University of Luxembourg), Patrick MEYER (Telecom Bretagne), Thomas Veneziano (University of Luxembourg).
-			Copyright (C) June 2012 DECISION DECK Consortium
+			Copyright (C) September 2012 DECISION DECK Consortium
 		</xs:documentation>
 	</xs:annotation>
 
