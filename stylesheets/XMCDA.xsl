@@ -571,8 +571,18 @@
   <li>
     <span>
     	<xsl:choose>
-				<xsl:when test="alternativeID"><xsl:value-of select="alternativeID"/></xsl:when>
+				<xsl:when test="attributeID"><xsl:value-of select="attributeID"/> </xsl:when>
+				<xsl:when test="attributesSetID"> <xsl:value-of select="attributesSetID"/> </xsl:when>
+				<xsl:when test="attributesSet"> <xsl:apply-templates select="attributesSet"/> </xsl:when>
 				<xsl:when test="criterionID"><xsl:value-of select="criterionID"/></xsl:when>
+				<xsl:when test="criteriaSetID"><xsl:value-of select="criteriaSetID"/></xsl:when>
+				<xsl:when test="criteriaSet"><xsl:apply-templates select="criteriaSet"/></xsl:when>
+				<xsl:when test="alternativeID"><xsl:value-of select="alternativeID"/></xsl:when>
+				<xsl:when test="alternativesSetID"><xsl:value-of select="alternativesSetID"/></xsl:when>
+				<xsl:when test="alternativesSet"> alternatives set <xsl:apply-templates select="alternativesSet"/> </xsl:when>
+				<xsl:when test="categoryID"><xsl:value-of select="categoryID"/></xsl:when>
+				<xsl:when test="categoriesSetID"><xsl:value-of select="alternativesSetID"/></xsl:when>
+				<xsl:when test="categoriesSet"> categories set <xsl:apply-templates select="categoriesSet"/> </xsl:when>
 			</xsl:choose>
     </span>
       <xsl:if test="node" >
