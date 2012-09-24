@@ -585,11 +585,6 @@
 					<xs:documentation>We suggest to use the following strings: preference, indifference, incomparability, outranking, geq (greater than or equal), leq (less than or equal), eq (equal), neq (not equal), gtr (greater), less (less), or any personnalised strings determining the type of relation.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="criterionID" type="xs:string" minOccurs="0">	
-				<xs:annotation>
-					<xs:documentation>Criterion of the comparison. If this attribute is not specified, this is general comparison.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:element name="pairs">
 				<xs:annotation>
 					<xs:documentation>A set of pairs.</xs:documentation>
