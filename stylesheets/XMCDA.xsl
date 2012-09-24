@@ -551,7 +551,36 @@
 
 
 <xsl:template match="hierarchy">
-	<xsl:value-of select="."/>
+	<div class="bloc">
+		<div class="classTitle">
+			<xsl:choose>
+				<xsl:when test="@mcdaConcept"><xsl:value-of select="@mcdaConcept"/></xsl:when>
+				<xsl:otherwise>Hierarchy</xsl:otherwise>
+			</xsl:choose>
+		</div>
+		<xsl:apply-templates select="description"/>
+	  <ul class="tree">
+	  	<xsl:if test="node">
+	  		<xsl:apply-templates select="node"/>
+	  	</xsl:if>
+	  </ul>
+	</div>
+</xsl:template>
+
+<xsl:template match="node" >
+  <li>
+    <span>
+    	<xsl:choose>
+				<xsl:when test="alternativeID"><xsl:value-of select="alternativeID"/></xsl:when>
+				<xsl:when test="criterionID"><xsl:value-of select="criterionID"/></xsl:when>
+			</xsl:choose>
+    </span>
+      <xsl:if test="node" >
+       	<ul>
+          <xsl:apply-templates select="node" />
+        </ul>
+      </xsl:if>
+  </li>
 </xsl:template>
 
 
@@ -1000,6 +1029,11 @@
 				<xsl:when test="@mcdaConcept"><xsl:value-of select="@mcdaConcept"/></xsl:when>
 				<xsl:otherwise>Alternatives comparisons</xsl:otherwise>
 			</xsl:choose>
+			<xsl:if test="./criterionID">
+				<xsl:text> based on the criterion of "</xsl:text>
+				<xsl:value-of select="./criterionID"/>
+				<xsl:text>"</xsl:text>
+			</xsl:if>
 		</div>
 		<xsl:apply-templates select="description"/>
 		<xsl:apply-templates select="valuation"/>
