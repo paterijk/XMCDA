@@ -1029,6 +1029,11 @@
 				<xsl:when test="@mcdaConcept"><xsl:value-of select="@mcdaConcept"/></xsl:when>
 				<xsl:otherwise>Alternatives comparisons</xsl:otherwise>
 			</xsl:choose>
+			<xsl:if test="./criterionID">
+				<xsl:text> based on the criterion of "</xsl:text>
+				<xsl:value-of select="./criterionID"/>
+				<xsl:text>"</xsl:text>
+			</xsl:if>
 		</div>
 		<xsl:apply-templates select="description"/>
 		<xsl:apply-templates select="valuation"/>
