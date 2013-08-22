@@ -1381,7 +1381,6 @@
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 
 </xs:schema>
