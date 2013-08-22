@@ -421,7 +421,6 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-						<xs:element name="criterionID" type="xs:string"/>
 						<xs:element name="function" type="xmcda:function"  minOccurs="1" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
@@ -456,7 +455,6 @@
 					</xs:annotation>
 					<xs:sequence>
 						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-						<xs:element name="criterionID" type="xs:string"/>
 						<xs:element name="threshold" type="xmcda:function"  minOccurs="1" maxOccurs="unbounded"/>
 					</xs:sequence>
 					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
