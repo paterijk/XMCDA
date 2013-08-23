@@ -50,7 +50,7 @@
 
 				<xs:element name="criteriaSets" type="xmcda:criteriaSets" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="criteriaFunctions" type="xmcda:criteriaFunctions" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="criteriaScales" type="xmcda:criterionScale" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="criteriaScales" type="xmcda:criteriaScales" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="criteriaThresholds" type="xmcda:criteriaThresholds" minOccurs="0" maxOccurs="unbounded"/>
 				
 				<xs:element name="criteriaValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaValues"/>
@@ -464,6 +464,17 @@
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 	
+	<xs:complexType name="criteriaScales">
+		<xs:annotation>
+			<xs:documentation>Scales related to criteria (typically evaluation scales).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="criterionScale" type="xmcda:criterionScale" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
 	<xs:complexType name="criterionScale">
 		<xs:annotation>
 			<xs:documentation>Evaluation scale related to a criterion.</xs:documentation>
@@ -471,7 +482,18 @@
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="criterionID" type="xs:string"/>
-			<xs:element name="scale" type="xmcda:scale" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="scales" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>One or more scales related to a criterion.</xs:documentation>
+					</xs:annotation>
+					<xs:sequence>
+						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+						<xs:element name="scale" type="xmcda:scale"  minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+				</xs:complexType>
+			</xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
