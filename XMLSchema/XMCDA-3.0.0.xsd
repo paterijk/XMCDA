@@ -1017,7 +1017,7 @@
 			<xs:documentation>Evaluation scale. Choice between 3 types of scales: nominal, qualitative and quantitative.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="valuationType" type="xmcda:valuationType" minOccurs="0"/>
+			<!-- <xs:element name="valuationType" type="xmcda:valuationType" minOccurs="0"/> -->
 			<xs:choice>
 				<xs:element name="nominal" type="xmcda:nominal"/>
 				<xs:element name="qualitative" type="xmcda:qualitative"/>
