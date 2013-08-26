@@ -1131,7 +1131,7 @@
 				<xs:element name="label" type="xs:string"/>
 				<xs:element name="boolean" type="xs:boolean"/>
 				<xs:element name="NA" type="xmcda:NA"/>
-				<xs:element name="fuzzyNumber" type="xmcda:fuzzyNumber"/>
+				<xs:element name="fuzzyNumber" type="xmcda:membershipFunction"/>
 				<xs:element name="valuedLabel" type="xmcda:valuedLabel"/>
 			</xs:choice>
 		</xs:sequence>
@@ -1207,57 +1207,65 @@
 			<xs:element name="value" type="xmcda:value"/>
 		</xs:sequence>
 	</xs:complexType>
-
-	<xs:complexType name="fuzzyNumber">
+	
+	
+	<xs:complexType name="membershipFunction">
 		<xs:annotation>
-			<xs:documentation>A fuzzy number via a membership function.</xs:documentation>
+			<xs:documentation>Restriction of the "function" type to functions compatible with fuzzy numbers.</xs:documentation>
 		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="piecewiseLinearMembershipFunction" minOccurs="1">
-				<xs:annotation>
-					<xs:documentation>A piecewise linear function defined by a sequence of segments. If necessary for, the shape (triangular or trapezoidal) of the function could be specified in the mcdaConcept attribute of  the fuzzy number.</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="segment" maxOccurs="unbounded">
-							<xs:annotation>
-								<xs:documentation>A segment, defined by two points: one for the head, one for the tail. An attribute in the head and the tail allows to specify if the point is included in the segment or not (open).</xs:documentation>
-							</xs:annotation>
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element name="head">
-										<xs:annotation>
-											<xs:documentation>The head point of a segment. Attribute "open" allows to specify if the point is included in the segment (false) or not (true). By default, the point is included (false).</xs:documentation>
-										</xs:annotation>
-										<xs:complexType>
-											<xs:complexContent>
-												<xs:extension base="xmcda:point">
-													<xs:attribute name="open" type="xs:boolean"/>
-												</xs:extension>
-											</xs:complexContent>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="tail">
-										<xs:annotation>
-											<xs:documentation>The tail point of a segment. Attribute "open" allows to specify if the point is included in the segment (false) or not (true). By default, the point is included (false).</xs:documentation>
-										</xs:annotation>
-										<xs:complexType>
-											<xs:complexContent>
-												<xs:extension base="xmcda:point">
-													<xs:attribute name="open" type="xs:boolean"/>
-												</xs:extension>
-											</xs:complexContent>
-										</xs:complexType>
-									</xs:element>
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
+		<xs:complexContent>
+			<xs:restriction base="xmcda:function">
+					<xs:choice>
+						<xs:element name="piecewiseLinear" type="xmcda:piecewiseLinear"/>
+					</xs:choice>
+			</xs:restriction>
+		</xs:complexContent>
 	</xs:complexType>
-
+	
+	
+	<xs:complexType name="piecewiseLinear">
+		<xs:annotation>
+			<xs:documentation>Piecewise linear function defined by a sequence of segments.</xs:documentation>
+		</xs:annotation>
+		
+			<xs:sequence>
+				<xs:element name="segment" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Segment, defined by two points: one for the head, one for the tail. An attribute in the head and the tail allows to specify if the point is included in the segment or not (open).</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="head">
+								<xs:annotation>
+									<xs:documentation>Head point of a segment. Attribute "open" allows to specify if the point is included in the segment (false) or not (true). By default, the point is included (false).</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="xmcda:point">
+											<xs:attribute name="open" type="xs:boolean"/>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="tail">
+								<xs:annotation>
+									<xs:documentation>Tail point of a segment. Attribute "open" allows to specify if the point is included in the segment (false) or not (true). By default, the point is included (false).</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="xmcda:point">
+											<xs:attribute name="open" type="xs:boolean"/>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		
+	</xs:complexType>
+	
 	<xs:complexType name="point">
 		<xs:annotation>
 			<xs:documentation>Point defined by an abscissa and an ordinate.</xs:documentation>
@@ -1280,7 +1288,6 @@
 		<xs:annotation>
 			<xs:documentation>A general function which can be of one of the following four types: either a constant, a linear function (defined by a slope and an intercept), a piecewise linear function (defined by a sequence of segments), or a set of points.</xs:documentation>
 		</xs:annotation>
-		<xs:sequence>
 			<xs:choice>
 				<xs:element name="constant" type="xmcda:numericValue"/>
 				<xs:element name="linear">
@@ -1294,48 +1301,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="piecewiseLinear">
-					<xs:annotation>
-						<xs:documentation>Piecewise linear function defined by a sequence of segments.</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="segment" maxOccurs="unbounded">
-								<xs:annotation>
-									<xs:documentation>Segment, defined by two points: one for the head, one for the tail. An attribute in the head and the tail allows to specify if the point is included in the segment or not (open).</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="head">
-											<xs:annotation>
-												<xs:documentation>Head point of a segment. Attribute "open" allows to specify if the point is included in the segment (false) or not (true). By default, the point is included (false).</xs:documentation>
-											</xs:annotation>
-											<xs:complexType>
-												<xs:complexContent>
-													<xs:extension base="xmcda:point">
-														<xs:attribute name="open" type="xs:boolean"/>
-													</xs:extension>
-												</xs:complexContent>
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="tail">
-											<xs:annotation>
-												<xs:documentation>Tail point of a segment. Attribute "open" allows to specify if the point is included in the segment (false) or not (true). By default, the point is included (false).</xs:documentation>
-											</xs:annotation>
-											<xs:complexType>
-												<xs:complexContent>
-													<xs:extension base="xmcda:point">
-														<xs:attribute name="open" type="xs:boolean"/>
-													</xs:extension>
-												</xs:complexContent>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
+				<xs:element name="piecewiseLinear" type="xmcda:piecewiseLinear"/>
 				<xs:element name="points">
 					<xs:annotation>
 						<xs:documentation>List of points.</xs:documentation>
@@ -1347,7 +1313,6 @@
 					</xs:complexType>
 				</xs:element>
 			</xs:choice>
-		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 
