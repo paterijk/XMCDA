@@ -67,7 +67,7 @@
 				<xs:element name="alternativesLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesLinearConstraints"/>
 				<xs:element name="alternativesMatrix" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesMatrix"/>
 
-				<!-- data linked to allternatives and criteria -->
+				<!-- data linked to alternatives and criteria -->
 
 				<xs:element name="alternativesCriteriaValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesCriteriaValues"/>
 
@@ -150,7 +150,7 @@
 
 	<xs:complexType name="bibliography">
 		<xs:annotation>
-			<xs:documentation>Bbibliographical entries</xs:documentation>
+			<xs:documentation>Bibliographical entries</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0" maxOccurs="1"/>
@@ -1060,28 +1060,18 @@
 
 	<xs:complexType name="qualitative">
 		<xs:annotation>
-			<xs:documentation>Scale type of qualitative ordered levels. Described by a preference direction and either classical ranked labels, or fuzzy labels.</xs:documentation>
+			<xs:documentation>Scale type of qualitative ordered levels. Described by a preference direction and either classical ranked labels or fuzzy labels (via valued labels in both cases).</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="preferenceDirection" type="xmcda:preferenceDirection" minOccurs="0"/>
 			<xs:choice>
-				<xs:element name="rankedLabels">
+				<xs:element name="valuedLabels">
 					<xs:complexType>
 						<xs:annotation>
-							<xs:documentation>Sequence of ranked labels.</xs:documentation>
+							<xs:documentation>Sequence of valued labels. Could either be labels to which are associated ranks, or fuzzy labels.</xs:documentation>
 						</xs:annotation>
 						<xs:sequence>
-							<xs:element name="rankedLabel" type="xmcda:rankedLabel" minOccurs="1" maxOccurs="unbounded"/>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="fuzzyLabels">
-					<xs:complexType>
-						<xs:annotation>
-							<xs:documentation>Sequence of fuzzy labels.</xs:documentation>
-						</xs:annotation>
-						<xs:sequence>
-							<xs:element name="rankedLabel" type="xmcda:fuzzyLabel" minOccurs="1" maxOccurs="unbounded"/>
+							<xs:element name="valuedLabel" type="xmcda:valuedLabel" minOccurs="1" maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -1139,11 +1129,10 @@
 				<xs:element name="interval" type="xmcda:interval"/>
 				<xs:element name="rational" type="xmcda:rational"/>
 				<xs:element name="label" type="xs:string"/>
-				<xs:element name="rankedLabel" type="xmcda:rankedLabel"/>
 				<xs:element name="boolean" type="xs:boolean"/>
 				<xs:element name="NA" type="xmcda:NA"/>
 				<xs:element name="fuzzyNumber" type="xmcda:fuzzyNumber"/>
-				<xs:element name="fuzzyLabel" type="xmcda:fuzzyLabel"/>
+				<xs:element name="valuedLabel" type="xmcda:valuedLabel"/>
 			</xs:choice>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
@@ -1209,23 +1198,13 @@
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="rankedLabel">
+	<xs:complexType name="valuedLabel">
 		<xs:annotation>
-			<xs:documentation>Label to which is associated an integer rank. For example for ordinal scales.</xs:documentation>
+			<xs:documentation>Label to which is associated a value. Can be used to represent ranks of ordinal labels, or fuzzy labels for example. </xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="label" type="xs:string"/>
-			<xs:element name="rank" type="xs:integer"/>
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name="fuzzyLabel">
-		<xs:annotation>
-			<xs:documentation>Label to which is associated a fuzzy number.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="label" type="xs:string"/>
-			<xs:element name="fuzzyNumber" type="xmcda:fuzzyNumber"/>
+			<xs:element name="value" type="xmcda:value"/>
 		</xs:sequence>
 	</xs:complexType>
 
