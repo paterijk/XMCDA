@@ -219,7 +219,7 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="alternativeID" type="xs:string"/>
-						<xs:element name="values" minOccurs="0" maxOccurs="unbounded" type="xmcda:values"/>
+						<xs:element name="values" minOccurs="0" maxOccurs="1" type="xmcda:values"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -248,7 +248,7 @@
 				<xs:element name="alternativeID" type="xs:string"/>
 				<xs:element name="alternativesSetID" type="xs:string"/>
 			</xs:choice>
-			<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
@@ -281,7 +281,7 @@
 								<xs:sequence>
 									<xs:element name="initial" type="xmcda:alternativeReference"/>
 									<xs:element name="terminal" type="xmcda:alternativeReference"/>
-									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
@@ -316,7 +316,7 @@
 										<xs:element name="alternativeID" type="xs:string"/>
 										<xs:element name="alternativesSetID" type="xs:string"/>
 									</xs:choice>
-									<xs:element name="values" type="xmcda:values" minOccurs="0"/>
+									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
@@ -359,7 +359,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="1"/>
 					</xs:sequence>
 					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 				</xs:complexType>
@@ -446,7 +446,7 @@
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="criterionID" type="xs:string"/>
-			<xs:element name="thresholds" minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="thresholds" minOccurs="1" maxOccurs="1">
 				<xs:complexType>
 					<xs:annotation>
 						<xs:documentation>One or more discrimination thresholds related to a criterion.</xs:documentation>
@@ -480,7 +480,7 @@
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="criterionID" type="xs:string"/>
-			<xs:element name="scales" minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="scales" minOccurs="1" maxOccurs="1">
 				<xs:complexType>
 					<xs:annotation>
 						<xs:documentation>One or more scales related to a criterion.</xs:documentation>
@@ -517,7 +517,7 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="criterionID" type="xs:string"/>
-						<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -546,7 +546,7 @@
 				<xs:element name="criterionID" type="xs:string"/>
 				<xs:element name="criteriaSetID" type="xs:string"/>
 			</xs:choice>
-			<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
@@ -573,7 +573,7 @@
 								<xs:sequence>
 									<xs:element name="initial" type="xmcda:criterionReference"/>
 									<xs:element name="terminal" type="xmcda:criterionReference"/>
-									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
@@ -615,7 +615,7 @@
 										<xs:element name="criterionID" type="xs:string"/>
 										<xs:element name="criteriaSetID" type="xs:string"/>
 									</xs:choice>
-									<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="unbounded"/>
+									<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="1"/>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
@@ -669,7 +669,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="1"/>
 					</xs:sequence>
 					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 				</xs:complexType>
@@ -752,7 +752,7 @@
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="categoryID" type="xs:string"/>
-						<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -781,7 +781,7 @@
 				<xs:element name="categoryID" type="xs:string"/>
 				<xs:element name="categoriesSetID" type="xs:string"/>
 			</xs:choice>
-			<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
@@ -805,7 +805,7 @@
 									<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 									<xs:element name="initial" type="xmcda:categoryReference"/>
 									<xs:element name="terminal" type="xmcda:categoryReference"/>
-									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
@@ -840,7 +840,7 @@
 										<xs:element name="categoryID" type="xs:string"/>
 										<xs:element name="categoriesSetID" type="xs:string"/>
 									</xs:choice>
-									<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="unbounded"/>
+									<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="1"/>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
@@ -883,7 +883,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
-						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="1"/>
 					</xs:sequence>
 					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 				</xs:complexType>
@@ -935,7 +935,7 @@
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="alternativeID" type="xs:string"/>
-										<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="1"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -943,7 +943,7 @@
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="alternativeID" type="xs:string"/>
-										<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -981,7 +981,7 @@
 				<xs:element name="categoriesSetID" type="xs:string"/>
 				<xs:element name="categoriesInterval" type="xmcda:categoriesInterval"/>
 			</xs:choice>
-			<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
@@ -1339,7 +1339,7 @@
 					<xs:sequence>
 						<xs:element name="description" minOccurs="0" type="xmcda:description"/>
 						<xs:element name="criterionID" minOccurs="1" maxOccurs="1" type="xs:string"/>
-						<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="unbounded"/>
+						<xs:element name="values" type="xmcda:values" minOccurs="1" maxOccurs="1"/>
 						
 					</xs:sequence>
 				</xs:complexType>
