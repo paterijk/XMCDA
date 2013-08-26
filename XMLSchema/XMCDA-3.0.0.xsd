@@ -1302,9 +1302,9 @@
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="piecewiseLinear" type="xmcda:piecewiseLinear"/>
-				<xs:element name="points">
+				<xs:element name="discrete">
 					<xs:annotation>
-						<xs:documentation>List of points.</xs:documentation>
+						<xs:documentation>A discrete function defined by a sequence of points.</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
