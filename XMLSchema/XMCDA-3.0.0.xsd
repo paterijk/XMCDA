@@ -417,13 +417,11 @@
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="criterionID" type="xs:string"/>
-			<xs:element name="functions" minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="functions" minOccurs="1" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 						<xs:element name="function" type="xmcda:function"  minOccurs="1" maxOccurs="unbounded"/>
 					</xs:sequence>
-					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
