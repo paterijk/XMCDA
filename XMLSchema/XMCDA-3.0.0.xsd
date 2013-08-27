@@ -335,21 +335,28 @@
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
-						<xs:documentation>A linear constraint related to alternatives or sets of alternatives. It is composed of a sum of elements, each element being composed of an alternative or a set of alternatives and a coefficient. The rhs allows to specify the value of the right hand side. The values linked to each constraint can represent a credibility of this constraint in the eyes of a decision maker, for example.</xs:documentation>
+						<xs:documentation>A linear constraint related to alternatives or sets of alternatives. It is composed of a sum of elements, each element being composed of an alternative or a set of alternatives or a variable and a coefficient. The rhs allows to specify the value of the right hand side. The values linked to each constraint can represent a credibility of this constraint in the eyes of a decision maker, for example.</xs:documentation>
 					</xs:annotation>
 					<xs:sequence>
-						<xs:element name="element" minOccurs="1" maxOccurs="unbounded">
+						<xs:element name="elements"  minOccurs="0" maxOccurs="1">
 							<xs:complexType>
 								<xs:sequence>
-									<xs:choice>
-										<xs:element name="alternativeID" type="xs:string"/>
-										<xs:element name="alternativesSetID" type="xs:string"/>
-									</xs:choice>
-									<xs:element name="coefficient" type="xmcda:numericValue" minOccurs="1" maxOccurs="1"/>
+									<xs:element name="element" minOccurs="1" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:choice>
+													<xs:element name="alternativeID" type="xs:string"/>
+													<xs:element name="alternativesSetID" type="xs:string"/>
+													<xs:element name="variable" type="xmcda:variable"/>
+												</xs:choice>
+												<xs:element name="coefficient" type="xmcda:numericValue" minOccurs="1" maxOccurs="1"/>
+											</xs:sequence>
+											<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+										</xs:complexType>
+									</xs:element>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
-						<xs:element name="rhs" type="xmcda:numericValue"/>
 						<xs:element name="operator" minOccurs="1">
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
@@ -359,6 +366,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
+						<xs:element name="rhs" type="xmcda:numericValue"/>
 						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="1"/>
 					</xs:sequence>
 					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
@@ -644,22 +652,29 @@
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
-						<xs:documentation>A linear constraint related to criteria. It is constructed from a sum of elements, each element being composed of a reference to a criterion or a set of criteria, and a multiplicative coefficient. The right hand side is specified separately, and the operator is either geq, leq or eq. Values can also be assigned to each constraint, to represent, e.g., a credibility of the constraint.</xs:documentation>
+						<xs:documentation>A linear constraint related to criteria. It is constructed from a sum of elements, each element being composed of a reference to a criterion or a set of criteria or a variable, and a multiplicative coefficient. The right hand side is specified separately, and the operator is either geq, leq or eq. Values can also be assigned to each constraint, to represent, e.g., a credibility of the constraint.</xs:documentation>
 					</xs:annotation>
 					<xs:sequence>
 						<xs:element name="description" type="xmcda:description" minOccurs="0" maxOccurs="1"/>
-						<xs:element name="element"  maxOccurs="unbounded">
+						<xs:element name="elements"  minOccurs="0" maxOccurs="1">
 							<xs:complexType>
 								<xs:sequence>
-									<xs:choice>
-										<xs:element name="criterionID" type="xs:string"/>
-										<xs:element name="criteriaSetID" type="xs:string"/>
-									</xs:choice>
-									<xs:element name="coefficient" type="xmcda:numericValue"/>
+									<xs:element name="element" minOccurs="1" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:choice>
+													<xs:element name="criterionID" type="xs:string"/>
+													<xs:element name="criteriaSetID" type="xs:string"/>
+													<xs:element name="variable" type="xmcda:variable"/>
+												</xs:choice>
+												<xs:element name="coefficient" type="xmcda:numericValue"/>
+											</xs:sequence>
+											<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+										</xs:complexType>										
+									</xs:element>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
-						<xs:element name="rhs" type="xmcda:numericValue"/>
 						<xs:element name="operator" minOccurs="1">
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
@@ -669,6 +684,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
+						<xs:element name="rhs" type="xmcda:numericValue"/>
 						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="1"/>
 					</xs:sequence>
 					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
@@ -859,21 +875,29 @@
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
-						<xs:documentation>A linear constraint related to categories.</xs:documentation>
+						<xs:documentation>A linear constraint related to categories. It is constructed from a sum of elements, each element being composed of a reference to a category or a set of categories or a variable, and a multiplicative coefficient. The right hand side is specified separately, and the operator is either geq, leq or eq. Values can also be assigned to each constraint, to represent, e.g., a credibility of the constraint.</xs:documentation>
 					</xs:annotation>
 					<xs:sequence>
-						<xs:element name="element"  minOccurs="1" maxOccurs="unbounded">
+						<xs:element name="elements"  minOccurs="0" maxOccurs="1">
 							<xs:complexType>
 								<xs:sequence>
-									<xs:choice minOccurs="1">
-										<xs:element name="categoryID" type="xs:string"/>
-										<xs:element name="categoriesSetID" type="xs:string"/>
-									</xs:choice>
-									<xs:element name="coefficient" type="xmcda:numericValue"/>
+									<xs:element name="element" minOccurs="1" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:choice>
+													<xs:element name="categoryID" type="xs:string"/>
+													<xs:element name="categoriesSetID" type="xs:string"/>
+													<xs:element name="variable" type="xmcda:variable"/>
+												</xs:choice>
+												<xs:element name="coefficient" type="xmcda:numericValue"/>
+											</xs:sequence>
+											<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+										</xs:complexType>										
+									</xs:element>
 								</xs:sequence>
 							</xs:complexType>
+							
 						</xs:element>
-						<xs:element name="rhs" type="xmcda:numericValue"/>
 						<xs:element name="operator" minOccurs="1">
 							<xs:simpleType>
 								<xs:restriction base="xs:string">
@@ -883,6 +907,7 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
+						<xs:element name="rhs" type="xmcda:numericValue"/>
 						<xs:element name="values" type="xmcda:values"  minOccurs="0" maxOccurs="1"/>
 					</xs:sequence>
 					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
@@ -1333,6 +1358,18 @@
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="variable">
+		<xs:annotation>
+			<xs:documentation>
+				A variable (for linear constraints for example). The id is required to identify the variable.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description"  minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributesIDRequired"/>
 	</xs:complexType>
 
 </xs:schema>
