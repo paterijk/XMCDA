@@ -1017,7 +1017,6 @@
 			<xs:documentation>Evaluation scale. Choice between 3 types of scales: nominal, qualitative and quantitative.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<!-- <xs:element name="valuationType" type="xmcda:valuationType" minOccurs="0"/> -->
 			<xs:choice>
 				<xs:element name="nominal" type="xmcda:nominal"/>
 				<xs:element name="qualitative" type="xmcda:qualitative"/>
@@ -1026,16 +1025,6 @@
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
-
-	<xs:simpleType name="valuationType">
-		<xs:annotation>
-			<xs:documentation>Type of valuation of a scale. By default, if not specified, it is considered as a standard scale.</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="standard"/>
-			<xs:enumeration value="bipolar"/>
-		</xs:restriction>
-	</xs:simpleType>
 
 	<xs:complexType name="nominal">
 		<xs:annotation>
@@ -1143,7 +1132,6 @@
 		<xs:sequence>
 			<xs:element name="value" type="xmcda:value" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 
 	<xs:complexType name="interval">
