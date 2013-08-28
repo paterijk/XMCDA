@@ -497,7 +497,6 @@
 						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 						<xs:element name="scale" type="xmcda:scale"  minOccurs="1" maxOccurs="unbounded"/>
 					</xs:sequence>
-					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
@@ -1075,7 +1074,7 @@
 			<xs:documentation>Scale type of qualitative ordered levels. Described by a preference direction and either classical ranked labels or fuzzy labels (via valued labels in both cases).</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="preferenceDirection" type="xmcda:preferenceDirection" minOccurs="0"/>
+			<xs:element name="preferenceDirection" type="xmcda:preferenceDirection" minOccurs="1"/>
 			<xs:choice>
 				<xs:element name="valuedLabels">
 					<xs:complexType>
@@ -1096,7 +1095,7 @@
 			<xs:documentation>Scale type which is quantitative. It is described by a preference direction (min or max), and a minimal and maximal quantitative evaluation.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="preferenceDirection" type="xmcda:preferenceDirection" minOccurs="0"/>
+			<xs:element name="preferenceDirection" type="xmcda:preferenceDirection" minOccurs="1"/>
 			<xs:element name="minimum" type="xmcda:numericValue" minOccurs="0"/>
 			<xs:element name="maximum" type="xmcda:numericValue" minOccurs="0"/>
 		</xs:sequence>
