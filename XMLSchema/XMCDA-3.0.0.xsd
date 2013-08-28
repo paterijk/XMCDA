@@ -1324,13 +1324,13 @@
 
 	<xs:complexType name="function">
 		<xs:annotation>
-			<xs:documentation>A general function which can be of one of the following four types: either a constant, a linear function (defined by a slope and an intercept), a piecewise linear function (defined by a sequence of segments), or a set of points.</xs:documentation>
+			<xs:documentation>A general function which can be of one of the following four types: either a constant, an affine function (defined by a slope and an intercept), a piecewise linear function (defined by a sequence of segments), or a set of points.</xs:documentation>
 		</xs:annotation>
 			<xs:choice>
 				<xs:element name="constant" type="xmcda:numericValue"/>
-				<xs:element name="linear">
+				<xs:element name="affine">
 					<xs:annotation>
-						<xs:documentation>Linear function. Requires a slope and an intercept.</xs:documentation>
+						<xs:documentation>Affine function. Requires a slope and an intercept.</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
