@@ -460,9 +460,9 @@
 					</xs:annotation>
 					<xs:sequence>
 						<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-						<xs:element name="threshold" type="xmcda:function"  minOccurs="1" maxOccurs="unbounded"/>
+						<!-- <xs:element name="threshold" type="xmcda:function"  minOccurs="1" maxOccurs="unbounded"/> -->
+						<xs:element name="threshold" type="xmcda:threshold" minOccurs="1" maxOccurs="unbounded"/>
 					</xs:sequence>
-					<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
@@ -499,6 +499,35 @@
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="threshold">
+		<xs:annotation>
+			<xs:documentation>Discrimination threshold (used to represent preferences on criteria).</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="constant" type="xmcda:numericValue"></xs:element>
+			<xs:element name="affine">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="type" minOccurs="0" maxOccurs="1">
+							<xs:simpleType>
+								<xs:annotation>
+									<xs:documentation>The type of the affine threshold : either direct when the evaluation of the best of the 2 alternatives is taken into account in the affine formula, or inverse when the evaluation of the worst alternative is considered in the formula. If not present, it is assumed that the type is direct.</xs:documentation>
+								</xs:annotation>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="direct"/>
+									<xs:enumeration value="inverse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="slope" type="xmcda:numericValue" minOccurs="1" maxOccurs="1"/>
+						<xs:element name="intercept" type="xmcda:numericValue" minOccurs="1" maxOccurs="1"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 	
