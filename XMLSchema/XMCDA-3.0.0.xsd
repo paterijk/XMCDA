@@ -593,6 +593,7 @@
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 			<xs:element name="criterionThreshold" type="xmcda:criterionThreshold" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 	
 	<xs:complexType name="criterionThreshold">
@@ -900,9 +901,7 @@
 						<xs:documentation>A row of the matrix.</xs:documentation>
 					</xs:annotation>
 					<xs:sequence>
-						<xs:choice>
-							<xs:element name="criteriaSetID" type="xs:string"/>
-						</xs:choice>
+						<xs:element name="criteriaSetID" type="xs:string"/>						
 						<xs:element name="column" maxOccurs="unbounded">
 							<xs:complexType>
 								<xs:annotation>
