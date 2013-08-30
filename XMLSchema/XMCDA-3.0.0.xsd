@@ -928,6 +928,7 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="variables" type="xmcda:variables" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -943,7 +944,7 @@
 											<xs:sequence>
 												<xs:choice>
 													<xs:element name="criterionID" type="xs:string"/>
-													<xs:element name="variable" type="xmcda:variable"/>
+													<xs:element name="variableID" type="xs:string"/>
 												</xs:choice>
 												<xs:element name="coefficient" type="xmcda:numericValue"/>
 											</xs:sequence>
@@ -1834,6 +1835,15 @@
 			<xs:element name="description" type="xmcda:description"  minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributesIDRequired"/>
+	</xs:complexType>
+	
+	<xs:complexType name="variables">
+		<xs:annotation>
+			<xs:documentation>A compound tag to store the definitions of the variables of a linear constraints system.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="variable" type="xmcda:variable" minOccurs="1" maxOccurs="unbounded"/>			
+		</xs:sequence>
 	</xs:complexType>
 	
 </xs:schema>
