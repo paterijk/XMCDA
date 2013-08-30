@@ -436,6 +436,7 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="variables" type="xmcda:variables" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -450,7 +451,7 @@
 											<xs:sequence>
 												<xs:choice>
 													<xs:element name="alternativeID" type="xs:string"/>
-													<xs:element name="variable" type="xmcda:variable"/>
+													<xs:element name="variableID" type="xs:string"/>
 												</xs:choice>
 												<xs:element name="coefficient" type="xmcda:numericValue" minOccurs="1" maxOccurs="1"/>
 											</xs:sequence>
@@ -485,6 +486,7 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="variables" type="xmcda:variables" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -499,7 +501,7 @@
 											<xs:sequence>
 												<xs:choice>
 													<xs:element name="alternativesSetID" type="xs:string"/>
-													<xs:element name="variable" type="xmcda:variable"/>
+													<xs:element name="variableID" type="xs:string"/>
 												</xs:choice>
 												<xs:element name="coefficient" type="xmcda:numericValue" minOccurs="1" maxOccurs="1"/>
 											</xs:sequence>
@@ -979,6 +981,7 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="variables" type="xmcda:variables" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -994,7 +997,7 @@
 											<xs:sequence>
 												<xs:choice>
 													<xs:element name="criteriaSetID" type="xs:string"/>
-													<xs:element name="variable" type="xmcda:variable"/>
+													<xs:element name="variableID" type="xs:string"/>
 												</xs:choice>
 												<xs:element name="coefficient" type="xmcda:numericValue"/>
 											</xs:sequence>
@@ -1299,6 +1302,7 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="variables" type="xmcda:variables" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -1313,7 +1317,7 @@
 											<xs:sequence>
 												<xs:choice>
 													<xs:element name="categoryID" type="xs:string"/>
-													<xs:element name="variable" type="xmcda:variable"/>
+													<xs:element name="variableID" type="xs:string"/>
 												</xs:choice>
 												<xs:element name="coefficient" type="xmcda:numericValue"/>
 											</xs:sequence>
@@ -1349,6 +1353,7 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="variables" type="xmcda:variables" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -1363,7 +1368,7 @@
 											<xs:sequence>
 												<xs:choice>
 													<xs:element name="categoriesSetID" type="xs:string"/>
-													<xs:element name="variable" type="xmcda:variable"/>
+													<xs:element name="variableID" type="xs:string"/>
 												</xs:choice>
 												<xs:element name="coefficient" type="xmcda:numericValue"/>
 											</xs:sequence>
