@@ -435,6 +435,7 @@
 			<xs:documentation>Linear constraints on the alternatives.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -483,6 +484,7 @@
 			<xs:documentation>Linear constraints on sets of alternatives.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -925,6 +927,7 @@
 			<xs:documentation>Represents a set of linear constraints on the criteria.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -974,6 +977,7 @@
 			<xs:documentation>Represents a set of linear constraints on the criteria.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -1293,6 +1297,7 @@
 			<xs:documentation>Represents a set of linear constraints on the categories.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
@@ -1342,6 +1347,7 @@
 			<xs:documentation>Represents a set of linear constraints on sets of categories.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 			<xs:element name="constraint" minOccurs="1" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:annotation>
