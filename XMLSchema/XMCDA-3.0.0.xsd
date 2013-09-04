@@ -22,9 +22,9 @@
 				
 				<!--				<xs:element name="description" type="xmcda:projectDescription" minOccurs="0" maxOccurs="unbounded"/>-->
 				
-				<!--				<xs:element name="methodMessages" type="xmcda:methodMessages" minOccurs="0" maxOccurs="unbounded"/>-->
+				<xs:element name="methodMessages" type="xmcda:methodMessages" minOccurs="0" maxOccurs="unbounded"/>
 				
-				<!--				<xs:element name="methodParameters" type="xmcda:methodParameters" minOccurs="0" maxOccurs="unbounded"/>-->
+				<xs:element name="methodParameters" type="xmcda:methodParameters" minOccurs="0" maxOccurs="unbounded"/>
 				
 				<!-- definition of the alternatives -->
 				
@@ -1884,6 +1884,57 @@
 		<xs:sequence>
 			<xs:element name="variable" type="xmcda:variable" minOccurs="1" maxOccurs="unbounded"/>			
 		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="methodParameters">
+		<xs:annotation>
+			<xs:documentation>Input parameters for an algorithm.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="parameter" type="xmcda:parameter" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="parameter">
+		<xs:annotation>
+			<xs:documentation>A parameter for an algorithm.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description"  minOccurs="0" maxOccurs="1"/>
+			<xs:sequence>
+				<xs:element name="values" type="xmcda:values">
+					
+				</xs:element>
+			</xs:sequence>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="methodMessages">
+		<xs:annotation>
+			<xs:documentation>Output messages of algorithms.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xmcda:description"/>
+			<xs:element name="errorMessage" type="xmcda:message"/>
+			<xs:element name="logMessage" type="xmcda:message"/>
+			<xs:element name="message" type="xmcda:message"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+	</xs:complexType>
+	
+	<xs:complexType name="message">
+		<xs:annotation>
+			<xs:documentation>XMCDA generic method message structure.</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
+			<xs:element name="number" type="xs:integer" minOccurs="0"/>
+			<xs:element name="text" type="xs:string" minOccurs="0"/>
+		</xs:all>
+		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 	
 </xs:schema>
