@@ -1068,11 +1068,9 @@
 			<xs:documentation>A row in a crosstable alternatives x criteria.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="description" minOccurs="0" type="xmcda:description"/>
 			<xs:element name="alternativeID" minOccurs="1" type="xs:string"/>
 			<xs:element name="criteriaValues" type="xmcda:criteriaValues" minOccurs="1" maxOccurs="1"/>
 		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 	
 	
