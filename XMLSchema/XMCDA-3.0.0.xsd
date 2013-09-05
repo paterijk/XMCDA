@@ -356,6 +356,7 @@
 											</xs:sequence>
 										</xs:complexType>
 									</xs:element>
+									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
