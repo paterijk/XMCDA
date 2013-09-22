@@ -24,15 +24,18 @@
 
 				<!-- definition of the alternatives -->
 
-				<xs:element name="alternatives" type="xmcda:alternatives" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="alternatives" type="xmcda:alternatives" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="alternativesSets" type="xmcda:alternativesSets" minOccurs="0" maxOccurs="1"/>
 
 				<!-- definition of the criteria -->
 
-				<xs:element name="criteria" type="xmcda:criteria" minOccurs="0" maxOccurs="unbounded"/>			
+				<xs:element name="criteria" type="xmcda:criteria" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="criteriaSets" type="xmcda:criteriaSets" minOccurs="0" maxOccurs="1"/>
 
 				<!-- definition of the categories -->
 
-				<xs:element name="categories" type="xmcda:categories" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="categories" type="xmcda:categories" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="categoriesSets" type="xmcda:categoriesSets" minOccurs="0" maxOccurs="1"/>
 
 				<!-- the performance table -->
 
@@ -44,7 +47,6 @@
 
 				<!-- data linked to alternatives -->
 
-				<xs:element name="alternativesSets" type="xmcda:alternativesSets" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="alternativesValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesValues"/>
 				<xs:element name="alternativesSetsValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesSetsValues"/>
 				<xs:element name="alternativesComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesComparisons"/>
@@ -56,7 +58,6 @@
 
 				<!-- data linked to criteria -->
 
-				<xs:element name="criteriaSets" type="xmcda:criteriaSets" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="criteriaFunctions" type="xmcda:criteriaFunctions" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="criteriaScales" type="xmcda:criteriaScales" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="criteriaThresholds" type="xmcda:criteriaThresholds" minOccurs="0" maxOccurs="unbounded"/>
@@ -75,7 +76,6 @@
 
 				<!-- data linked to categories -->
 
-				<xs:element name="categoriesSets" type="xmcda:categoriesSets" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="categoriesProfiles" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesProfiles" />
 				<xs:element name="alternativesAssignments" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesAssignments"/>
 				<xs:element name="categoriesValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesValues"/>
@@ -234,7 +234,7 @@
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+		<xs:attributeGroup ref="xmcda:defaultAttributesIDRequired"/>
 	</xs:complexType>
 
 	<xs:complexType name="alternativesValues">
@@ -724,7 +724,7 @@
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+		<xs:attributeGroup ref="xmcda:defaultAttributesIDRequired"/>
 	</xs:complexType>
 
 	<xs:complexType name="criteriaValues">
@@ -1129,7 +1129,7 @@
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+		<xs:attributeGroup ref="xmcda:defaultAttributesIDRequired"/>
 	</xs:complexType>
 
 	<xs:complexType name="categoriesValues">
