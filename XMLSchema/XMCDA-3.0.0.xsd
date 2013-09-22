@@ -88,9 +88,9 @@
 				<xs:element name="categoriesSetsMatrix" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesSetsMatrix"/>
 
 				<!-- data linked to algorithms -->
-				<xs:element name="methodParameters" type="xmcda:methodParameters" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="methodMessages" type="xmcda:methodMessages" minOccurs="0" maxOccurs="unbounded"/>
 
+				<xs:element name="methodParameters" type="xmcda:methodParameters" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="methodExecutionResults" type="xmcda:methodExecutionResult" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 
 		</xs:complexType>
@@ -1918,18 +1918,35 @@
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 
-	<xs:complexType name="methodMessages">
+	<xs:complexType name="methodExecutionResult">
 		<xs:annotation>
 			<xs:documentation>Output messages of algorithms.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="description" type="xmcda:description"/>
-			<xs:element name="errorMessage" type="xmcda:message"/>
-			<xs:element name="logMessage" type="xmcda:message"/>
-			<xs:element name="message" type="xmcda:message"/>
+			<xs:element name="description" type="xmcda:description" minOccurs="0" />
+			<xs:element name="status" type="xmcda:methodMessagesStatus" minOccurs="0"/>
+			<xs:element name="messages" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="message" type="xmcda:message" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
+
+	<xs:simpleType name="methodMessagesStatus">
+		<xs:annotation>
+			<xs:documentation>.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ok"/>
+			<xs:enumeration value="warning"/>
+			<xs:enumeration value="error"/>
+			<xs:enumeration value="terminated"/>
+		</xs:restriction>
+	</xs:simpleType>
 
 	<xs:complexType name="message">
 		<xs:annotation>
@@ -1937,10 +1954,22 @@
 		</xs:annotation>
 		<xs:all>
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-			<xs:element name="number" type="xs:integer" minOccurs="0"/>
-			<xs:element name="text" type="xs:string" minOccurs="0"/>
+			<xs:element name="text" type="xs:string"/>
 		</xs:all>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+		<xs:attribute name="level" type="xmcda:messageLevel" default="info"/>
 	</xs:complexType>
+	
+	<xs:simpleType name="messageLevel">
+		<xs:annotation>
+			<xs:documentation>.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="debug"/>
+			<xs:enumeration value="info"/>
+			<xs:enumeration value="warning"/>
+			<xs:enumeration value="error"/>
+		</xs:restriction>
+	</xs:simpleType>
 
 </xs:schema>
