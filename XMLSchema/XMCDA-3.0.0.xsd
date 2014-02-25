@@ -49,8 +49,6 @@
 
 				<xs:element name="alternativesValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesValues"/>
 				<xs:element name="alternativesSetsValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesSetsValues"/>
-				<xs:element name="alternativesComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesComparisons"/>
-				<xs:element name="alternativesSetsComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesSetsComparisons"/>
 				<xs:element name="alternativesLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesLinearConstraints"/>
 				<xs:element name="alternativesSetsLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesSetsLinearConstraints"/>
 				<xs:element name="alternativesMatrix" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesMatrix"/>
@@ -63,8 +61,6 @@
 				<xs:element name="criteriaThresholds" type="xmcda:criteriaThresholds" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="criteriaValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaValues"/>
 				<xs:element name="criteriaSetsValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaSetsValues"/>
-				<xs:element name="criteriaComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaComparisons"/>
-				<xs:element name="criteriaSetsComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaSetsComparisons"/>
 				<xs:element name="criteriaLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaLinearConstraints"/>
 				<xs:element name="criteriaSetsLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaSetsLinearConstraints"/>
 				<xs:element name="criteriaMatrix" minOccurs="0" maxOccurs="unbounded" type="xmcda:criteriaMatrix"/>
@@ -80,8 +76,6 @@
 				<xs:element name="alternativesAssignments" minOccurs="0" maxOccurs="unbounded" type="xmcda:alternativesAssignments"/>
 				<xs:element name="categoriesValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesValues"/>
 				<xs:element name="categoriesSetsValues" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesSetsValues"/>
-				<xs:element name="categoriesComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesComparisons"/>
-				<xs:element name="categoriesSetsComparisons" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesSetsComparisons"/>
 				<xs:element name="categoriesLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesLinearConstraints"/>
 				<xs:element name="categoriesSetsLinearConstraints" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesSetsLinearConstraints"/>
 				<xs:element name="categoriesMatrix" minOccurs="0" maxOccurs="unbounded" type="xmcda:categoriesMatrix"/>
@@ -89,8 +83,8 @@
 
 				<!-- data linked to algorithms -->
 
-				<xs:element name="methodParameters" type="xmcda:methodParameters" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="methodExecutionResults" type="xmcda:methodExecutionResult" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="programParameters" type="xmcda:programParameters" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="programExecutionResult" type="xmcda:programExecutionResult" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 
 		</xs:complexType>
@@ -164,7 +158,10 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="bibEntry" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="bibEntry" type="xs:string" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>BIG idem multiplicité 1..* ou 0..* ?</xs:documentation>
+			</xs:annotation></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
@@ -177,7 +174,10 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="alternative" type="xmcda:alternative" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="alternative" type="xmcda:alternative" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation> <![CDATA[BIG est-ce qu'on garde une multiplicité de 1..* ou plutôt 0..*? Si on garde 1..* on ne peut pas sauvegarder d'<alternatives> sans alternative (p.ex., en cours de conception, avec quand même une partie des autres attributs remplis)]]></xs:documentation>
+			</xs:annotation></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
@@ -283,87 +283,7 @@
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 
-	<xs:complexType name="alternativesComparisons">
-		<xs:annotation>
-			<xs:documentation>Valued relation on alternatives. The type of relation can be specified in the mcdaConcept attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
-			<xs:element name="pairs">
-				<xs:annotation>
-					<xs:documentation>Pairs of alternatives or sets of alternatives.</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="pair" minOccurs="1" maxOccurs="unbounded">
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element name="initial">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="alternativeID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="terminal">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="alternativeID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
-	</xs:complexType>
 
-	<xs:complexType name="alternativesSetsComparisons">
-		<xs:annotation>
-			<xs:documentation>Valued relation on sets of alternatives. The type of relation can be specified in the mcdaConcept attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
-			<xs:element name="pairs">
-				<xs:annotation>
-					<xs:documentation>Pairs of alternatives or sets of alternatives.</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="pair" minOccurs="1" maxOccurs="unbounded">
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element name="initial">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="alternativesSetID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="terminal">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="alternativesSetID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
-	</xs:complexType>
 
 	<xs:complexType name="alternativesMatrix">
 		<xs:annotation>
@@ -563,6 +483,9 @@
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>BIG Heu c'est quoi ce choice qui traîne???</xs:documentation>
+				</xs:annotation>
 				<xs:element name="active" type="xs:boolean" minOccurs="0">
 					<xs:annotation>
 						<xs:documentation>Indicates whether a criterion is active or not in the calculations. By default, if the tag is not present, the criterion is considered to be active (true).</xs:documentation>
@@ -589,17 +512,17 @@
 			<xs:documentation>Function related to a criterion, to store for example a value function.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="description" type="xmcda:description" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="criterionID" type="xs:string"/>
+			<xs:element name="description" type="xmcda:description" minOccurs="0" maxOccurs="1" />
+			<xs:element name="criterionID" type="xs:string" />
 			<xs:element name="functions" minOccurs="1" maxOccurs="1">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="function" type="xmcda:function"  minOccurs="1" maxOccurs="unbounded"/>
+						<xs:element name="function" type="xmcda:function" minOccurs="1" maxOccurs="unbounded" />
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+		<xs:attributeGroup ref="xmcda:defaultAttributes" />
 	</xs:complexType>
 
 	<xs:complexType name="criteriaThresholds">
@@ -610,7 +533,7 @@
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
 			<xs:element name="criterionThreshold" type="xmcda:criterionThreshold" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
+		<xs:attributeGroup ref="xmcda:defaultAttributes" />
 	</xs:complexType>
 
 	<xs:complexType name="criterionThreshold">
@@ -773,95 +696,7 @@
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 
-	<xs:complexType name="criteriaComparisons">
-		<xs:annotation>
-			<xs:documentation>A valued binary relation on the criteria. The type of relation can be specified in the mcdaConcept attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-			<xs:element name="valuation" type="xmcda:scale" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Defines the scale of the valuation of the relation.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="pairs">
-				<xs:annotation>
-					<xs:documentation>A sequence of pairs of criteria. Each pair is defined by its initial and terminal elements, and can be valued.</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="pair" minOccurs="1" maxOccurs="unbounded">
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element name="initial">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="criterionID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="terminal">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="criterionID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
-	</xs:complexType>
 
-	<xs:complexType name="criteriaSetsComparisons">
-		<xs:annotation>
-			<xs:documentation>A valued binary relation on sets of criteria. The type of relation can be specified in the mcdaConcept attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-			<xs:element name="valuation" type="xmcda:scale" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Defines the scale of the valuation of the relation.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="pairs">
-				<xs:annotation>
-					<xs:documentation>A sequence of pairs of sets of criteria. Each pair is defined by its initial and terminal elements, and can be valued.</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="pair" minOccurs="1" maxOccurs="unbounded">
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element name="initial">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="criteriaSetID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="terminal">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="criteriaSetID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
-	</xs:complexType>
 
 	<xs:complexType name="criteriaMatrix">
 		<xs:annotation>
@@ -918,7 +753,7 @@
 						<xs:documentation>A row of the matrix.</xs:documentation>
 					</xs:annotation>
 					<xs:sequence>
-						<xs:element name="criteriaSetID" type="xs:string"/>						
+						<xs:element name="criteriaSetID" type="xs:string"/>
 						<xs:element name="column" maxOccurs="unbounded">
 							<xs:complexType>
 								<xs:annotation>
@@ -1024,7 +859,7 @@
 															<xs:element name="coefficient" type="xmcda:numericValue"/>
 														</xs:sequence>
 														<xs:attributeGroup ref="xmcda:defaultAttributes"/>
-													</xs:complexType>										
+													</xs:complexType>
 												</xs:element>
 											</xs:sequence>
 										</xs:complexType>
@@ -1083,7 +918,10 @@
 				<xs:documentation>Definition of the categories.</xs:documentation>
 			</xs:annotation>
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-			<xs:element name="category" type="xmcda:category" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="category" type="xmcda:category" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>BIG multiplicité!: 1..* ou 0..*</xs:documentation>
+			</xs:annotation></xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
@@ -1178,89 +1016,7 @@
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 
-	<xs:complexType name="categoriesComparisons">
-		<xs:annotation>
-			<xs:documentation>A valued binary relation on categories. The type of relation can be specified in the mcdaConcept attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
-			<xs:element name="pairs">
-				<xs:annotation>
-					<xs:documentation>A set of pairs of categories.</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="pair" minOccurs="1" maxOccurs="unbounded">
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-									<xs:element name="initial">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="categoryID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="terminal">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="categoryID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
-	</xs:complexType>
 
-	<xs:complexType name="categoriesSetsComparisons">
-		<xs:annotation>
-			<xs:documentation>A valued binary relation on sets of categories. The type of relation can be specified in the mcdaConcept attribute.</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-			<xs:element name="valuation" type="xmcda:scale" minOccurs="0"/>
-			<xs:element name="pairs">
-				<xs:annotation>
-					<xs:documentation>A set of pairs of categories.</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="pair" minOccurs="1" maxOccurs="unbounded">
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-									<xs:element name="initial">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="categoriesSetID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="terminal">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="categoriesSetID" type="xs:string"/>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-									<xs:element name="values" type="xmcda:values" minOccurs="0" maxOccurs="1"/>
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
-	</xs:complexType>
 
 	<xs:complexType name="categoriesMatrix">
 		<xs:annotation>
@@ -1340,7 +1096,7 @@
 									<xs:element name="elements"  minOccurs="0" maxOccurs="1">
 										<xs:complexType>
 											<xs:sequence>
-												<xs:element name="element" minOccurs="1" maxOccurs="unbounded">
+												<xs:element name="element"  minOccurs="1" maxOccurs="unbounded">
 													<xs:complexType>
 														<xs:sequence>
 															<xs:choice>
@@ -1350,7 +1106,7 @@
 															<xs:element name="coefficient" type="xmcda:numericValue"/>
 														</xs:sequence>
 														<xs:attributeGroup ref="xmcda:defaultAttributes"/>
-													</xs:complexType>										
+													</xs:complexType>
 												</xs:element>
 											</xs:sequence>
 										</xs:complexType>
@@ -1605,7 +1361,7 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="preferenceDirection" type="xmcda:preferenceDirection" minOccurs="1"/>
-			<xs:element name="minimum" type="xmcda:numericValue" minOccurs="0"/>
+			<xs:element name="minimum" type="xmcda:numericValue" minOccurs="0"/><!--  BIG au moins un min / max non? -->
 			<xs:element name="maximum" type="xmcda:numericValue" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -1752,7 +1508,7 @@
 				<xs:annotation>
 					<xs:documentation>Segment, defined by two points: one for the head, one for the tail. An attribute in the head and the tail allows to specify if the point is included in the segment or not (open).</xs:documentation>
 				</xs:annotation>
-				<xs:complexType>
+				<xs:complexType><!--  BIG on ne devrait pas avoir à répéter les deux mêmes complexTypes -->
 					<xs:sequence>
 						<xs:element name="head">
 							<xs:annotation>
@@ -1892,20 +1648,20 @@
 
 	<!-- Algorithms -->
 
-	<xs:complexType name="methodParameters">
+	<xs:complexType name="programParameters">
 		<xs:annotation>
-			<xs:documentation>Input parameters for an algorithm.</xs:documentation>
+			<xs:documentation>Input parameters for a program.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence minOccurs="0" maxOccurs="unbounded">
 			<xs:element name="description" type="xmcda:description" minOccurs="0"/>
-			<xs:element name="parameter" type="xmcda:parameter" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="parameter" type="xmcda:programParameter" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 
-	<xs:complexType name="parameter">
+	<xs:complexType name="programParameter">
 		<xs:annotation>
-			<xs:documentation>A parameter for an algorithm.</xs:documentation>
+			<xs:documentation>A parameter for a program.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description"  minOccurs="0" maxOccurs="1"/>
@@ -1918,9 +1674,9 @@
 		<xs:attributeGroup ref="xmcda:defaultAttributes"/>
 	</xs:complexType>
 
-	<xs:complexType name="methodExecutionResult">
+	<xs:complexType name="programExecutionResult">
 		<xs:annotation>
-			<xs:documentation>Output messages of algorithms.</xs:documentation>
+			<xs:documentation>Output of programs.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="description" type="xmcda:description" minOccurs="0" />
